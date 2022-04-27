@@ -30,6 +30,11 @@ public class LocationController {
     @Operation(summary = "Tagastab nimekirja kõigist asukohtadest")
     public List<LocationDto> findAllLocations() {
         return locationService.findAllLocations();
+    }
 
+    @PutMapping("/id")
+    @Operation(summary = "Uuendab asukohta ID järgi")
+    public void updateLocationById(@RequestParam Integer id, @RequestBody @Valid LocationDto locationDto) {
+        locationService.updateLocationById(id, locationDto);
     }
 }

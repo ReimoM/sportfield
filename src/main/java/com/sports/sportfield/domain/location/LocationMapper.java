@@ -15,6 +15,7 @@ public interface LocationMapper {
     List<LocationDto> toDtos(List<Location> locations);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "id", ignore = true)
     void updateEntity(LocationDto locationDto, @MappingTarget Location location);
 }
 

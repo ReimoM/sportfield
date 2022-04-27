@@ -3,6 +3,7 @@ package com.sports.sportfield.domain.location;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,14 +27,19 @@ public class LocationService {
         locationRepository.deleteById(location.getId());
     }
 
-    private Location getValidLocationById(Integer locationId) {
-        Optional<Location> location = locationRepository.findById(locationId);
-        return location.get();
-    }
-
     public List<LocationDto> findAllLocations() {
         List<Location> locations = locationRepository.findAll();
         return locationMapper.toDtos(locations);
+    }
 
+    public void updateLocationById(Integer locationId, LocationDto locationDto) {
+        Location location = locationRepository.getById(locationId);
+        locationMapper.updateEntity(locationDto, location);
+        locationRepository.save(location);
+    }
+
+    private Location getValidLocationById(Integer locationId) {
+        Optional<Location> location = locationRepository.findById(locationId);
+        return location.get();
     }
 }
