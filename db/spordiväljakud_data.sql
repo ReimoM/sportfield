@@ -164,3 +164,16 @@ INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, e
 INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 13, 5, 07, 22, null, true);
 INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 13, 6, 07, 22, null, true);
 INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 13, 7, 07, 22, null, true);
+INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 1, null, null, null, '2022-05-01', false);
+INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 2, null, null, null, '2022-05-01', false);
+INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 3, null, null, null, '2022-05-01', false);
+INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 4, null, null, null, '2022-05-01', false);
+INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 5, null, null, null, '2022-05-01', false);
+INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 6, null, null, null, '2022-05-01', false);
+INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 7, null, null, null, '2022-05-01', false);
+INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 8, null, null, null, '2022-05-01', false);
+INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 9, null, null, null, '2022-05-01', false);
+INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 10, null, null, null, '2022-05-01', false);
+INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 11, null, null, null, '2022-05-01', false);
+INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 12, null, null, null, '2022-05-01', false);
+INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 13, null, null, null, '2022-05-01', false);
