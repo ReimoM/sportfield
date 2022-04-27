@@ -32,7 +32,8 @@ public class ContactService {
 
     }
 
-    public void deleteContactById(Integer id) {contactRepository.deleteById(id);
+    public void deleteContactById(Integer id) {
+        contactRepository.deleteById(id);
     }
 
     public void updateContactById(Integer id, ContactDto contactDto) {
