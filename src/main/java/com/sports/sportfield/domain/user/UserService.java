@@ -43,7 +43,10 @@ public class UserService {
 
     public void deleteUserById(Integer id) {
         User user = userRepository.getById(id);
-      contactRepository.delete(user.getContact());
-      userRepository.delete(user);
+        Contact contact = user.getContact();
+        userRepository.delete(user);
+      contactRepository.delete(contact);
+
     }
+
 }

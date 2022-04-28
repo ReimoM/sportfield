@@ -28,13 +28,13 @@ public class UserController {
 
     @GetMapping("/id")
     @Operation(summary = "leiab kasutaja id järgi")
-    public UserDto findUserById(Integer id) {
+    public UserDto findUserById(@RequestParam Integer id) {
         return userService.findUserById(id);
     }
 
     @DeleteMapping("/id")
     @Operation(summary = "kustutab kasutaja koos kontaktiga id järgi")
-    public void deleteUserById(Integer id) {
+    public void deleteUserById(@RequestParam Integer id) {
         userService.deleteUserById(id);
     }
 
