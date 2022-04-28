@@ -22,7 +22,7 @@ public class ContactController {
 
 
     @GetMapping("/all")
-    @Operation(summary = "Kuvab kõik kontakti")
+    @Operation(summary = "Kuvab kõik kontaktid")
     public List<ContactDto> findAllContacts() {
         return contactService.findAllContacts();
     }
@@ -34,7 +34,7 @@ public class ContactController {
     }
 
     @DeleteMapping("/id")
-    @Operation(summary = "Kustutab kasutaja järgi")
+    @Operation(summary = "Kustutab kasutaja id järgi")
     public void deleteContactById(@RequestParam Integer id) {
         contactService.deleteContactById(id);
     }
