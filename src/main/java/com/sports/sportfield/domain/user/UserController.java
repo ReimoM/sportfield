@@ -32,5 +32,11 @@ public class UserController {
         return userService.findUserById(id);
     }
 
+    @DeleteMapping("/id")
+    @Operation(summary = "kustutab kasutaja koos kontaktiga id järgi")
+    public void deleteUserById(Integer id) {
+        userService.deleteUserById(id);
+    }
+
 
 }

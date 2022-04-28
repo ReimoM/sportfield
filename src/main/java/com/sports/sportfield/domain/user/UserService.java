@@ -41,4 +41,9 @@ public class UserService {
         return userMapper.toDto(user);
     }
 
+    public void deleteUserById(Integer id) {
+        User user = userRepository.getById(id);
+      contactRepository.delete(user.getContact());
+      userRepository.delete(user);
+    }
 }
