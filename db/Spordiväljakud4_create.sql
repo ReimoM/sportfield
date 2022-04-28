@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-04-28 12:18:31.897
+-- Last modification date: 2022-04-28 13:16:06.298
 
 -- tables
 -- Table: booking
@@ -74,6 +74,14 @@ CREATE TABLE picture_field (
     picture_id int  NOT NULL,
     title varchar(255)  NULL,
     CONSTRAINT picture_field_pk PRIMARY KEY (id)
+);
+
+-- Table: role
+CREATE TABLE role (
+    id serial  NOT NULL,
+    name varchar(255)  NOT NULL,
+    user_id int  NOT NULL,
+    CONSTRAINT role_pk PRIMARY KEY (id)
 );
 
 -- Table: sports
@@ -153,6 +161,14 @@ ALTER TABLE picture_field ADD CONSTRAINT picture_field_field
 ALTER TABLE picture_field ADD CONSTRAINT picture_field_picture
     FOREIGN KEY (picture_id)
     REFERENCES picture (id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: role_user (table: role)
+ALTER TABLE role ADD CONSTRAINT role_user
+    FOREIGN KEY (user_id)
+    REFERENCES "user" (id)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;
