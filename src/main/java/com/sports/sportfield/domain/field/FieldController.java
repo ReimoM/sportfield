@@ -33,13 +33,13 @@ public class FieldController {
         return fieldService.findFieldById(id);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/id")
     @Operation(summary = "Kustuta väljak")
     public void removeFieldById(@RequestParam Integer id) {
         fieldService.removeFieldById(id);
     }
 
-    @PutMapping
+    @PutMapping ("/id")
     @Operation(summary = "Muuda väljaku infot")
     public void updateFieldById(@RequestParam Integer id, @Valid @RequestBody FieldDto fieldDto) {
         fieldService.updateFieldById(id, fieldDto);
