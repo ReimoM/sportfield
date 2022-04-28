@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-04-26 11:21:19.854
+-- Last modification date: 2022-04-28 12:18:31.897
 
 -- tables
 -- Table: booking
@@ -44,7 +44,7 @@ CREATE TABLE field_availability (
 CREATE TABLE field_booking (
     id serial  NOT NULL,
     booking_id int  NOT NULL,
-    field_id int  NOT NULL,
+    sports_field_id int  NOT NULL,
     date date  NOT NULL,
     start_time_hour int  NOT NULL,
     end_time_hour int  NOT NULL,
@@ -125,10 +125,10 @@ ALTER TABLE field_booking ADD CONSTRAINT field_booking_booking
     INITIALLY IMMEDIATE
 ;
 
--- Reference: field_booking_field (table: field_booking)
-ALTER TABLE field_booking ADD CONSTRAINT field_booking_field
-    FOREIGN KEY (field_id)
-    REFERENCES field (id)  
+-- Reference: field_booking_sports_field (table: field_booking)
+ALTER TABLE field_booking ADD CONSTRAINT field_booking_sports_field
+    FOREIGN KEY (sports_field_id)
+    REFERENCES sports_field (id)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;

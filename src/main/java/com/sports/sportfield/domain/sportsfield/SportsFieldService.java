@@ -4,6 +4,7 @@ import com.sports.sportfield.domain.field.Field;
 import com.sports.sportfield.domain.field.FieldRepository;
 import com.sports.sportfield.domain.sports.Sports;
 import com.sports.sportfield.domain.sports.SportsRepository;
+import com.sports.sportfield.service.fieldbooking.FieldBookingRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -45,5 +46,8 @@ public class SportsFieldService {
 
     public void removeSportsFieldById(Integer id) {
         sportsFieldRepository.deleteById(id);
+    }
+
+    public void addFieldBooking(FieldBookingRequest request) {
     }
 }
