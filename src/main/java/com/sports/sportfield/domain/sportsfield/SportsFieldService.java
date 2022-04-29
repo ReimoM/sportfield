@@ -48,6 +48,4 @@ public class SportsFieldService {
         sportsFieldRepository.deleteById(id);
     }
 
-    public void addFieldBooking(FieldBookingRequest request) {
-    }
 }
