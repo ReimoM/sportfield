@@ -58,7 +58,6 @@ public class UserService {
     public User getValidUser(LogInRequest request) {
         Optional <User> user = userRepository.findByUsernameAndPassword(request.getUsername(), request.getPassword());
         validationService.userExists(user);
-        User userTemp = user.get();
-        return userTemp;
+        return user.get();
     }
 }

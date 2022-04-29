@@ -15,7 +15,7 @@ public class LogInController {
     private LogInService loginService;
 
     @PostMapping
-    public LogInResponse getValidUser(@RequestBody @Valid LogInRequest request) {
+    public LogInResponse getValidUser(@RequestBody LogInRequest request) {
         return loginService.getValidUser(request);
     }
 
