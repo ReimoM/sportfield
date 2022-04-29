@@ -1,5 +1,6 @@
 package com.sports.sportfield.service.fieldbooking;
 
+import com.sports.sportfield.domain.fieldavailability.FieldAvailabilityService;
 import com.sports.sportfield.domain.sportsfield.SportsFieldService;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,12 @@ public class FieldBookingService {
     @Resource
     private SportsFieldService sportsFieldService;
 
-    public void addFieldBooking(FieldBookingRequest request) {
-        sportsFieldService.addFieldBooking(request);
+    @Resource
+    private FieldAvailabilityService fieldAvailabilityService;
+
+
+    public NewFieldBookingDto getAvailableTimeSlots(BookingRequirementInfo bookingRequirementInfo) {
+
+        return null;
     }
 }
