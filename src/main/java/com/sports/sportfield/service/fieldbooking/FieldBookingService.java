@@ -16,7 +16,11 @@ public class FieldBookingService {
 
 
     public NewFieldBookingDto getAvailableTimeSlots(BookingRequirementInfo bookingRequirementInfo) {
+        fieldAvailabilityService.findAllAvailableTimeSlots(bookingRequirementInfo);
 
+        //Selle meetodiga leiad kõik vabad ajad konkreetsele spordiväljakule arvestades seejuures avatud aegu
+        // ja juba varasemalt broneeritud aegu.
+        //Tulemuse lisad timeSlots listi.
         return null;
     }
 }

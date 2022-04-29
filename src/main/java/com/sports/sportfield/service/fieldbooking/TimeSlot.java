@@ -1,6 +1,8 @@
 package com.sports.sportfield.service.fieldbooking;
 
+import lombok.Data;
 
+@Data
 public class TimeSlot {
     private Integer startTime;
 

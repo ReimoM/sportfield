@@ -2,11 +2,11 @@ package com.sports.sportfield.service.fieldbooking;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class BookingRequirementInfo {
     private Integer sportsFieldId;
-    private Date date;
+    private LocalDate date;
 
 }
