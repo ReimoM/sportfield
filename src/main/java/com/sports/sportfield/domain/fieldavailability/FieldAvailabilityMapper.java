@@ -13,5 +13,6 @@ public interface FieldAvailabilityMapper {
 
     @InheritConfiguration(name = "toEntity")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "id", ignore = true)
     void updateEntity(FieldAvailabilityDto fieldAvailabilityDto, @MappingTarget FieldAvailability fieldAvailability);
 }
