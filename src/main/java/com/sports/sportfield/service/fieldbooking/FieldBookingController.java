@@ -18,7 +18,7 @@ public class FieldBookingController {
 
     @PostMapping
     @Operation(summary = "Lisa broneering")
-    public void addFieldBooking(@Valid @RequestBody FieldBookingRequest request) {
-        fieldBookingService.addFieldBooking(request);
+    public NewFieldBookingDto getAvailableTimeSlots(@Valid @RequestBody BookingRequirementInfo bookingRequirementInfo) {
+       return fieldBookingService.getAvailableTimeSlots(bookingRequirementInfo);
     }
 }
