@@ -13,7 +13,7 @@ import java.util.Optional;
 public class ValidationService {
 
 
-    public static final String ACCOUNT_NOT_EXISTS = "Sellist kasutajat ei eksisteeri";
+    public static final String ACCOUNT_NOT_EXISTS = "Sellist kasutajat ei eksisteeri. Tehke uus kasutaja või kontrollige log in andmeid";
     public static final String CUSTOMER_NOT_EXISTS = "Sellist klienti ei eksisteeri";
     public static final String DEPOSIT_OVER_LIMIT = "Deposiidi limiit on ületatud";
     public static final String WITHDRAW_OVER_LIMIT = "Raha väljavõtmise limiit on ületatud";
@@ -22,7 +22,7 @@ public class ValidationService {
 
     public void userExists(Optional<User> user) {
         if (user.isEmpty()) {
-            throw new DataNotFoundException(ACCOUNT_NOT_EXISTS);
+            throw new DataNotFoundException(ACCOUNT_NOT_EXISTS, "Kontot pole");
         }
     }
 //

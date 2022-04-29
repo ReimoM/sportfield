@@ -1,5 +1,6 @@
 package com.sports.sportfield.service.login;
 
+import com.sports.sportfield.domain.role.Role;
 import com.sports.sportfield.domain.role.RoleService;
 import com.sports.sportfield.domain.user.User;
 import com.sports.sportfield.domain.user.UserService;
@@ -19,11 +20,12 @@ public class LogInService {
 
     public LogInResponse getValidUser(LogInRequest request) {
         User user = userService.getValidUser(request);
+        Role role = roleService.getUserRoleById(user.getId());
+
         LogInResponse response = new LogInResponse();
         response.setUserId(user.getId());
-        RoleService.getUserRoleById(response);
+        response.setRoleId(role.getId());
 
-        response.setRoleId();
-        return null;
+        return response;
     }
 }

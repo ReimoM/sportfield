@@ -5,6 +5,7 @@ import com.sports.sportfield.domain.user.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/login")
@@ -13,11 +14,8 @@ public class LogInController {
     @Resource
     private LogInService loginService;
 
-    @Resource
-    private UserService userService;
-
     @PostMapping
-    public LogInResponse getValidUser(@RequestBody LogInRequest request) {
+    public LogInResponse getValidUser(@RequestBody @Valid LogInRequest request) {
         return loginService.getValidUser(request);
     }
 
