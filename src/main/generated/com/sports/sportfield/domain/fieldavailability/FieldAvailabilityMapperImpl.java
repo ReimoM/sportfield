@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-04-29T13:13:43+0300",
+    date = "2022-04-29T14:20:07+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 16.0.2 (Amazon.com Inc.)"
 )
 @Component
@@ -39,6 +39,7 @@ public class FieldAvailabilityMapperImpl implements FieldAvailabilityMapper {
 
         FieldAvailabilityDto fieldAvailabilityDto = new FieldAvailabilityDto();
 
+        fieldAvailabilityDto.setFieldId( fieldAvailabilityFieldId( fieldAvailability ) );
         fieldAvailabilityDto.setId( fieldAvailability.getId() );
         fieldAvailabilityDto.setWeekday( fieldAvailability.getWeekday() );
         fieldAvailabilityDto.setStartTimeHour( fieldAvailability.getStartTimeHour() );
@@ -55,6 +56,10 @@ public class FieldAvailabilityMapperImpl implements FieldAvailabilityMapper {
             return;
         }
 
+        if ( fieldAvailability.getField() == null ) {
+            fieldAvailability.setField( new Field() );
+        }
+        fieldAvailabilityDtoToField1( fieldAvailabilityDto, fieldAvailability.getField() );
         if ( fieldAvailabilityDto.getWeekday() != null ) {
             fieldAvailability.setWeekday( fieldAvailabilityDto.getWeekday() );
         }
@@ -82,5 +87,30 @@ public class FieldAvailabilityMapperImpl implements FieldAvailabilityMapper {
         field.setId( fieldAvailabilityDto.getFieldId() );
 
         return field;
+    }
+
+    private Integer fieldAvailabilityFieldId(FieldAvailability fieldAvailability) {
+        if ( fieldAvailability == null ) {
+            return null;
+        }
+        Field field = fieldAvailability.getField();
+        if ( field == null ) {
+            return null;
+        }
+        Integer id = field.getId();
+        if ( id == null ) {
+            return null;
+        }
+        return id;
+    }
+
+    protected void fieldAvailabilityDtoToField1(FieldAvailabilityDto fieldAvailabilityDto, Field mappingTarget) {
+        if ( fieldAvailabilityDto == null ) {
+            return;
+        }
+
+        if ( fieldAvailabilityDto.getFieldId() != null ) {
+            mappingTarget.setId( fieldAvailabilityDto.getFieldId() );
+        }
     }
 }
