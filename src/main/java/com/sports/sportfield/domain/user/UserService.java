@@ -3,8 +3,11 @@ package com.sports.sportfield.domain.user;
 import com.sports.sportfield.domain.contact.Contact;
 import com.sports.sportfield.domain.contact.ContactRepository;
 import com.sports.sportfield.domain.contact.ContactService;
+import com.sports.sportfield.service.login.LogInRequest;
+import com.sports.sportfield.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -22,6 +25,9 @@ public class UserService {
 
     @Resource
     private ContactRepository contactRepository;
+
+    @Resource
+    private ValidationService validationService;
 
     public UserDto addNewUser(UserDto userDto) {
         User user = userMapper.toEntity(userDto);
@@ -49,4 +55,10 @@ public class UserService {
 
     }
 
+    public User getValidUser(LogInRequest request) {
+        Optional <User> user = userRepository.findByUsernameAndPassword(request.getUsername(), request.getPassword());
+        validationService.userExists(user);
+        User userTemp = user.get();
+        return userTemp;
+    }
 }

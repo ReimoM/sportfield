@@ -1,6 +1,25 @@
 package com.sports.sportfield.service.login;
 
+
+import com.sports.sportfield.domain.user.UserService;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+
+@RestController
+@RequestMapping("/login")
 public class LogInController {
+
+    @Resource
+    private LogInService loginService;
+
+    @Resource
+    private UserService userService;
+
+    @PostMapping
+    public LogInResponse getValidUser(@RequestBody LogInRequest request) {
+        return loginService.getValidUser(request);
+    }
 
     // TODO: 28.04.2022 //Controller tagastab LoginResponse objekti kus sees on userId ja userRoleId.
 //  Lisada siia controller, mis võtab sisse JSON objekti, kus on username ja password

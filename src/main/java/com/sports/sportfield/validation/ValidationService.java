@@ -1,5 +1,6 @@
 package com.sports.sportfield.validation;
 
+import com.sports.sportfield.domain.user.User;
 import com.sports.sportfield.infrastructure.exception.BusinessException;
 import com.sports.sportfield.infrastructure.exception.DataNotFoundException;
 
@@ -12,18 +13,18 @@ import java.util.Optional;
 public class ValidationService {
 
 
-    public static final String ACCOUNT_NOT_EXISTS = "Sellist kontot ei eksisteeri";
+    public static final String ACCOUNT_NOT_EXISTS = "Sellist kasutajat ei eksisteeri";
     public static final String CUSTOMER_NOT_EXISTS = "Sellist klienti ei eksisteeri";
     public static final String DEPOSIT_OVER_LIMIT = "Deposiidi limiit on ületatud";
     public static final String WITHDRAW_OVER_LIMIT = "Raha väljavõtmise limiit on ületatud";
     public static final String INSUFFICIENT_FUNDS = "Kontol pole piisavalt vahendeid tehingu sooritamiseks";
     public static final String ISIKUKOOD_ALREADY_TAKEN = "Isikukood on kasutusel";
 
-//    public void accountExists(Integer accountId, Optional<Account> account) {
-//        if (account.isEmpty()) {
-//            throw new DataNotFoundException(ACCOUNT_NOT_EXISTS, "Kontot ID'ga " + accountId + " ei leitud");
-//        }
-//    }
+    public void userExists(Optional<User> user) {
+        if (user.isEmpty()) {
+            throw new DataNotFoundException(ACCOUNT_NOT_EXISTS);
+        }
+    }
 //
 //    public void accountExists(String accountNumber, Optional<Account> account) {
 //        if (account.isEmpty()) {
