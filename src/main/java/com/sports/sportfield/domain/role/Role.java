@@ -1,4 +1,4 @@
-package com.sports.sportfield.domain.userrole;
+package com.sports.sportfield.domain.role;
 
 import com.sports.sportfield.domain.user.User;
 import lombok.Getter;
