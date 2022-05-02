@@ -14,10 +14,12 @@ public class FieldBookingController {
     private FieldBookingService fieldBookingService;
 
     @PostMapping
-    @Operation(summary = "Lisa broneering")
+    @Operation(summary = "Näita vabu aegu")
     public NewFieldBookingDto getAvailableTimeSlots(@Valid @RequestBody BookingRequirementInfo infoRequest) {
        return fieldBookingService.getAvailableTimeSlots(infoRequest);
     }
+
+
 
 
 
