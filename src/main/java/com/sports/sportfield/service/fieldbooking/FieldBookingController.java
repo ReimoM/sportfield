@@ -18,4 +18,7 @@ public class FieldBookingController {
     public NewFieldBookingDto getAvailableTimeSlots(@Valid @RequestBody BookingRequirementInfo infoRequest) {
        return fieldBookingService.getAvailableTimeSlots(infoRequest);
     }
+
+
+
 }

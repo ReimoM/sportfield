@@ -5,13 +5,12 @@ import com.sports.sportfield.service.fieldbooking.BookingRequirementInfo;
 import com.sports.sportfield.service.fieldbooking.FieldBooking;
 import com.sports.sportfield.service.fieldbooking.FieldBookingRepository;
 import com.sports.sportfield.service.fieldbooking.TimeSlot;
+import com.sports.sportfield.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +21,9 @@ public class FieldAvailabilityService {
     private FieldService fieldService;
 
     @Resource
+    private FieldAvailability fieldAvailability;
+
+    @Resource
     private FieldAvailabilityMapper fieldAvailabilityMapper;
 
     @Resource
@@ -29,6 +31,9 @@ public class FieldAvailabilityService {
 
     @Resource
     private FieldBookingRepository fieldBookingRepository;
+
+    @Resource
+    private ValidationService validationService;
 
     public void addAvailability(FieldAvailabilityDto availabilityDto) {
         FieldAvailability fieldAvailability = fieldAvailabilityMapper.toEntity(availabilityDto);
@@ -50,11 +55,16 @@ public class FieldAvailabilityService {
         Integer weekdayNumber = requestInfo.getDate().getDayOfWeek().getValue();
         Integer fieldId = requestInfo.getSportsFieldId();
 
-        LocalDate holiday = fieldAvailabilityRepository.findByHoliday(dateRequired).getHoliday();
-
         // todo: tee ära selline variant kus otsid fieldId ja kuupäeva järgi (holiday)
 
-        Optional<FieldAvailability> availabilityByFieldIdAndHoliday = fieldAvailabilityRepository.findAvailabilityByFieldIdAndHoliday(fieldId, holiday);
+        Optional<FieldAvailability> availabilityByFieldIdAndHoliday = fieldAvailabilityRepository.findAvailabilityByFieldIdAndHoliday(fieldId, dateRequired);
+
+        validationService.holidayExists(availabilityByFieldIdAndHoliday);
+
+
+        Optional<FieldAvailability> isOpen = fieldAvailabilityRepository.findByIsOpen(fieldId, weekdayNumber, fieldAvailability.getIsOpen());
+        validationService.isOpen(isOpen);
+
 
         // todo: tee Intgere list kõikidest tundidest, mis jäävad start ja end vahele (fori)
         // sisendi 8 ja 15 puhul, oleks tulemus 8,9,10,11,12,13,14

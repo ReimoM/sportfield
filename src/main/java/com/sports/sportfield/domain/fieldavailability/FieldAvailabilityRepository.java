@@ -19,7 +19,14 @@ public interface FieldAvailabilityRepository extends JpaRepository<FieldAvailabi
     @Query("select f from FieldAvailability f where f.field.id = ?1 and f.holiday = ?2")
     Optional<FieldAvailability> findAvailabilityByFieldIdAndHoliday(Integer id, LocalDate holiday);
 
-    FieldAvailability findByHoliday(LocalDate holiday);
+    @Query("select f from FieldAvailability f where f.holiday = ?1")
+    Optional<FieldAvailability> findByHoliday(LocalDate holiday);
+
+    @Query("select f from FieldAvailability f where f.field.id = ?1 and f.weekday = ?2 and f.isOpen = ?3")
+    Optional<FieldAvailability> findByIsOpen(Integer id, Integer weekday, Boolean isOpen);
+
+
+
 
 
 
