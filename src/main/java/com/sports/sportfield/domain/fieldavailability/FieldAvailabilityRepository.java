@@ -14,10 +14,10 @@ public interface FieldAvailabilityRepository extends JpaRepository<FieldAvailabi
     List<FieldAvailability> findByFieldId(Integer id);
 
     @Query("select f from FieldAvailability f where f.field.id = ?1 and f.weekday = ?2")
-    Optional<FieldAvailability> findByFieldIdAndWeekday(Integer fieldId, Integer weekdayNumber);
+    Optional<FieldAvailability> findWeekdayAvailability(Integer fieldId, Integer weekdayNumber);
 
     @Query("select f from FieldAvailability f where f.field.id = ?1 and f.holiday = ?2")
-    Optional<FieldAvailability> findAvailabilityByFieldIdAndHoliday(Integer id, LocalDate holiday);
+    Optional<FieldAvailability> findHolidayAvailability(Integer id, LocalDate holiday);
 
     @Query("select f from FieldAvailability f where f.holiday = ?1")
     Optional<FieldAvailability> findByHoliday(LocalDate holiday);

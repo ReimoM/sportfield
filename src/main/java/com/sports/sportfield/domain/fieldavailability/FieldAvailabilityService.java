@@ -1,6 +1,5 @@
 package com.sports.sportfield.domain.fieldavailability;
 
-import com.sports.sportfield.domain.field.FieldService;
 import com.sports.sportfield.service.fieldbooking.BookingRequirementInfo;
 import com.sports.sportfield.service.fieldbooking.FieldBooking;
 import com.sports.sportfield.service.fieldbooking.FieldBookingRepository;
@@ -16,12 +15,6 @@ import java.util.Optional;
 
 @Service
 public class FieldAvailabilityService {
-
-    @Resource
-    private FieldService fieldService;
-
-    @Resource
-    private FieldAvailability fieldAvailability;
 
     @Resource
     private FieldAvailabilityMapper fieldAvailabilityMapper;
@@ -54,76 +47,68 @@ public class FieldAvailabilityService {
         LocalDate dateRequired = requestInfo.getDate();
         Integer weekdayNumber = requestInfo.getDate().getDayOfWeek().getValue();
         Integer fieldId = requestInfo.getSportsFieldId();
+        Optional<FieldAvailability> holidayAvailability = fieldAvailabilityRepository.findHolidayAvailability(fieldId, dateRequired);
+        List<Integer> openHours = getOpenHours(weekdayNumber, fieldId, holidayAvailability);
+        List<Integer> bookedHours = getBookedHours(dateRequired, fieldId);
+        List<Integer> availableHours = getAvailableHours(openHours, bookedHours);
+        return getAvailableTimeSlots(availableHours);
+    }
 
-        // todo: tee ära selline variant kus otsid fieldId ja kuupäeva järgi (holiday)
+    private List<Integer> getOpenHours(Integer weekdayNumber, Integer fieldId, Optional<FieldAvailability> holidayAvailability) {
+        List<Integer> openHours;
+        if (holidayAvailability.isPresent()) {
+            openHours = getHolidayOpenHours(holidayAvailability);
+        } else {
+            openHours = getWeekdayOpenHours(weekdayNumber, fieldId);
+        }
+        return openHours;
+    }
 
-        Optional<FieldAvailability> availabilityByFieldIdAndHoliday = fieldAvailabilityRepository.findAvailabilityByFieldIdAndHoliday(fieldId, dateRequired);
-
-        validationService.holidayExists(availabilityByFieldIdAndHoliday);
-
-
-        Optional<FieldAvailability> isOpen = fieldAvailabilityRepository.findByIsOpen(fieldId, weekdayNumber, fieldAvailability.getIsOpen());
-        validationService.isOpen(isOpen);
-
-
-        // todo: tee Intgere list kõikidest tundidest, mis jäävad start ja end vahele (fori)
-        // sisendi 8 ja 15 puhul, oleks tulemus 8,9,10,11,12,13,14
-        Optional<FieldAvailability> fieldAvailabilityOnGivenWeekday = fieldAvailabilityRepository.findByFieldIdAndWeekday(fieldId, weekdayNumber);
-
-
-        Integer startTime = fieldAvailabilityRepository.findByFieldIdAndWeekday(fieldId, weekdayNumber).get().getStartTimeHour();
-        Integer endTime = fieldAvailabilityRepository.findByFieldIdAndWeekday(fieldId, weekdayNumber).get().getEndTimeHour();
-        List<Integer> openHours = getOpenHours(startTime, endTime);
-
-
-        // todo: Leia field_booking tabelist kõik (List) read, millele on sama kuupäeva 'dateRequired'
-        // kujutame ette, et vastuses on 2 rida
-        // ühel on requirement 9->10
-        // teisel on requirement 12->13
-
-        // teie ülesanne on nüüd koostada kõikide nendest tundidest täisarvude nimekiri mis on hõivatud
-        // e.g. 9,12
-
-        List<FieldBooking> bookingsBySportsFieldIdAndDate = fieldBookingRepository.findBySportsFieldIdAndDate(fieldId, dateRequired);
+    private List<Integer> getBookedHours(LocalDate dateRequired, Integer fieldId) {
+        List<FieldBooking> fieldBookings = fieldBookingRepository.findFieldBookings(fieldId, dateRequired);
         List<Integer> bookedHours = new ArrayList<>();
-        for (FieldBooking fieldBooking : bookingsBySportsFieldIdAndDate) {
+        for (FieldBooking fieldBooking : fieldBookings) {
             bookedHours.add(fieldBooking.getStartTimeHour());
         }
+        return bookedHours;
+    }
 
-
-        // Nüüd kui on see info olemas 'openHours' ja 'bookedHours', siis tuleks teha uus list 'availableHours'
-        // mis on openHours miinus bookedHours
-
+    private List<Integer> getAvailableHours(List<Integer> openHours, List<Integer> bookedHours) {
         List<Integer> availableHours = new ArrayList<>();
         for (Integer openHour : openHours) {
             if (!bookedHours.contains(openHour)) {
                 availableHours.add(openHour);
             }
 
-            }
-
-
-
-
-
-
-        // TODO:  tee tulemustest List<TimeSlot> list 'result'
-
-
-
-        List<TimeSlot> result = new ArrayList<>();
-        for (Integer hour : availableHours) {
-            if (!bookedHours.contains(hour)) {
-                TimeSlot timeSlot = new TimeSlot();
-                timeSlot.setStartTime(hour);
-                timeSlot.setTimeSlotInfo(hour + ":00 - " + (hour + 1) + ":00");
-                result.add(timeSlot);
-            }
-
         }
+        return availableHours;
+    }
 
-        return result;
 
+    private List<TimeSlot> getAvailableTimeSlots(List<Integer> availableHours) {
+        List<TimeSlot> availableTimeSlots = new ArrayList<>();
+        for (Integer hour : availableHours) {
+            TimeSlot timeSlot = new TimeSlot();
+            timeSlot.setStartTime(hour);
+            timeSlot.setTimeSlotInfo(hour + ":00 - " + (hour + 1) + ":00");
+            availableTimeSlots.add(timeSlot);
+        }
+        return availableTimeSlots;
+    }
+
+
+    private List<Integer> getHolidayOpenHours(Optional<FieldAvailability> holidayAvailability) {
+        List<Integer> openHours;
+        validationService.isClosed(holidayAvailability.get().getIsOpen());
+        openHours = getOpenHours(holidayAvailability.get().getStartTimeHour(), holidayAvailability.get().getEndTimeHour());
+        return openHours;
+    }
+
+    private List<Integer> getWeekdayOpenHours(Integer weekdayNumber, Integer fieldId) {
+        List<Integer> openHours;
+        Optional<FieldAvailability> weekdayAvailability = fieldAvailabilityRepository.findWeekdayAvailability(fieldId, weekdayNumber);
+        openHours = getOpenHours(weekdayAvailability.get().getStartTimeHour(), weekdayAvailability.get().getEndTimeHour());
+        return openHours;
     }
 
     private List<Integer> getOpenHours(Integer startTime, Integer endTime) {

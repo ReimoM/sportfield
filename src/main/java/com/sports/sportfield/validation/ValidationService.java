@@ -4,8 +4,6 @@ import com.sports.sportfield.domain.fieldavailability.FieldAvailability;
 import com.sports.sportfield.domain.user.User;
 import com.sports.sportfield.infrastructure.exception.BusinessException;
 import com.sports.sportfield.infrastructure.exception.DataNotFoundException;
-
-
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -15,29 +13,18 @@ public class ValidationService {
 
 
     public static final String ACCOUNT_NOT_EXISTS = "Incorrect details";
-    public static final String HOLIDAY = "Oleme suletud valitud päeval.";
     public static final String CLOSED = "Oleme sellel kuupäeval suletud.";
-    public static final String WITHDRAW_OVER_LIMIT = "Raha väljavõtmise limiit on ületatud";
-    public static final String INSUFFICIENT_FUNDS = "Kontol pole piisavalt vahendeid tehingu sooritamiseks";
-    public static final String ISIKUKOOD_ALREADY_TAKEN = "Isikukood on kasutusel";
 
     public void userExists(Optional<User> user) {
         if (user.isEmpty()) {
             throw new DataNotFoundException(ACCOUNT_NOT_EXISTS, " ");
         }
     }
-
-    public void holidayExists(Optional<FieldAvailability> availabilityByFieldIdAndHoliday) {
-        if (availabilityByFieldIdAndHoliday.isPresent()) {
-            throw new BusinessException(HOLIDAY, " On riigipüha.");
-        }
-    }
-
-    public void isOpen(Optional<FieldAvailability> isOpen) {
-        if (isOpen.isPresent()) {
+    public void isClosed(Boolean isOpen) {
+        if (!isOpen)
             throw new BusinessException(CLOSED, "");
-        }
     }
+}
 
 //
 //
@@ -79,5 +66,3 @@ public class ValidationService {
 //        if (customerExists) {
 //            throw new BusinessException(ISIKUKOOD_ALREADY_TAKEN, "Isikukood " + isikukood + " on juba kasutusel");
 //        }
-//    }
-}

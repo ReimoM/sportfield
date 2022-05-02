@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/field-booking")
@@ -14,10 +15,14 @@ public class FieldBookingController {
     private FieldBookingService fieldBookingService;
 
     @PostMapping
-    @Operation(summary = "Näita vabu aegu")
-    public NewFieldBookingDto getAvailableTimeSlots(@Valid @RequestBody BookingRequirementInfo infoRequest) {
+    @Operation(summary = "Näita vabu aegu FieldID ja kuupäeva järgi")
+    public List<TimeSlot> getAvailableTimeSlots(@Valid @RequestBody BookingRequirementInfo infoRequest) {
        return fieldBookingService.getAvailableTimeSlots(infoRequest);
     }
+
+//    @PostMapping
+//    @Operation (summary = "Lisa broneering")
+//    public void addNewBooking (@)
 
 
 

@@ -10,20 +10,17 @@ import java.util.List;
 
 @Service
 public class FieldBookingService {
-    @Resource
-    private SportsFieldService sportsFieldService;
 
     @Resource
     private FieldAvailabilityService fieldAvailabilityService;
 
-
-    public NewFieldBookingDto getAvailableTimeSlots(BookingRequirementInfo bookingRequirementInfo) {
+    public List<TimeSlot> getAvailableTimeSlots(BookingRequirementInfo bookingRequirementInfo) {
         List<TimeSlot> allAvailableTimeSlots = fieldAvailabilityService.findAllAvailableTimeSlots(bookingRequirementInfo);
-        NewFieldBookingDto newFieldBookingDto = new NewFieldBookingDto();
-        newFieldBookingDto.setSportsFieldId(bookingRequirementInfo.getSportsFieldId());
-        newFieldBookingDto.setDate(bookingRequirementInfo.getDate());
-        newFieldBookingDto.setTimeSlots(allAvailableTimeSlots);
+//        NewFieldBookingDto newFieldBookingDto = new NewFieldBookingDto();
+//        newFieldBookingDto.setSportsFieldId(bookingRequirementInfo.getSportsFieldId());
+//        newFieldBookingDto.setDate(bookingRequirementInfo.getDate());
+//        newFieldBookingDto.setTimeSlots(allAvailableTimeSlots);
 
-        return newFieldBookingDto;
+        return allAvailableTimeSlots;
     }
 }

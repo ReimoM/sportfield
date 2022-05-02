@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Service
 @Getter
 @Setter
 @Entity
