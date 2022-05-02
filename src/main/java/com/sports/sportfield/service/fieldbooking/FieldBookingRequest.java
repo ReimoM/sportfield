@@ -6,13 +6,16 @@ import lombok.Data;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
 public class FieldBookingRequest {
+    @NotNull
+    private Integer bookingId;
 
     @NotNull
-    private SportsField id;
+    private Integer sportsFieldId;
 
     @NotNull
     @Size (min = 1, max = 24)
@@ -23,7 +26,7 @@ public class FieldBookingRequest {
     private Integer endTime;
 
     @NotNull
-    private Date date;
+    private LocalDate date;
 
 
 }

@@ -23,4 +23,9 @@ public class FieldBookingService {
 
         return allAvailableTimeSlots;
     }
+
+    public void addNewBooking(FieldBookingRequest request) {
+
+
+    }
 }
