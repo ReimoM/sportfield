@@ -95,8 +95,21 @@ public class FieldAvailabilityService {
         // mis on openHours miinus bookedHours
 
         List<Integer> availableHours = new ArrayList<>();
+        for (Integer openHour : openHours) {
+            if (!bookedHours.contains(openHour)) {
+                availableHours.add(openHour);
+            }
+
+            }
+
+
+
+
+
 
         // TODO:  tee tulemustest List<TimeSlot> list 'result'
+
+
 
         List<TimeSlot> result = new ArrayList<>();
         for (Integer hour : availableHours) {
