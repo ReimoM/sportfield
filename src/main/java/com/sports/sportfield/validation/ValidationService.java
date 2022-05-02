@@ -34,7 +34,7 @@ public class ValidationService {
     }
 
     public void isOpen(Optional<FieldAvailability> isOpen) {
-        if (!isOpen.get().getIsOpen().equals(true)) {
+        if (isOpen.isPresent()) {
             throw new BusinessException(CLOSED, "");
         }
     }
