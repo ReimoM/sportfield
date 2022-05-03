@@ -20,10 +20,10 @@ public class FieldBookingController {
        return fieldBookingService.getAvailableTimeSlots(infoRequest);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/new")
     @Operation(summary = "Lisa broneering")
-    public void addNewBooking (@Valid @RequestBody  FieldBookingRequest request ) {
-        fieldBookingService.addNewBooking(request);
+    public void addBooking(@Valid @RequestBody  NewFieldBookingDto request ) {
+        fieldBookingService.addBooking(request);
     }
 
 

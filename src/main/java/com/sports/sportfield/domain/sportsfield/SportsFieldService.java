@@ -4,7 +4,7 @@ import com.sports.sportfield.domain.field.Field;
 import com.sports.sportfield.domain.field.FieldRepository;
 import com.sports.sportfield.domain.sports.Sports;
 import com.sports.sportfield.domain.sports.SportsRepository;
-import com.sports.sportfield.service.fieldbooking.FieldBookingRequest;
+
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -33,6 +33,11 @@ public class SportsFieldService {
     public SportsFieldDto findSportsFieldById(Integer id) {
         SportsField sportsField = sportsFieldRepository.getById(id);
         return sportsFieldMapper.toDto(sportsField);
+    }
+
+    public SportsField getValidSportsField(Integer sportFieldId) {
+        SportsField sportsField = sportsFieldRepository.getById(sportFieldId);
+        return sportsField;
     }
 
     public void addNewSportsField(Integer sportsId, Integer fieldId) {
