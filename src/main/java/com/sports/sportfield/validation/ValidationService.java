@@ -16,12 +16,12 @@ public class ValidationService {
 
     public void userExists(Optional<User> user) {
         if (user.isEmpty()) {
-            throw new DataNotFoundException(ACCOUNT_NOT_EXISTS, " ");
+            throw new DataNotFoundException(ACCOUNT_NOT_EXISTS, "Kasutaja puudub, tehke kasutaja");
         }
     }
     public void isClosed(Boolean isOpen) {
         if (!isOpen)
-            throw new BusinessException(CLOSED, "");
+            throw new BusinessException(CLOSED, "Vabandame ebamugavuste pärast");
     }
 }
 
