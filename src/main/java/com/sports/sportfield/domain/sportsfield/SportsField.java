@@ -1,6 +1,6 @@
 package com.sports.sportfield.domain.sportsfield;
 
-import com.sports.sportfield.domain.field.Field;
+import com.sports.sportfield.domain.field.field.Field;
 import com.sports.sportfield.domain.sports.Sports;
 import lombok.Getter;
 import lombok.Setter;

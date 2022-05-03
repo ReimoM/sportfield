@@ -3,7 +3,6 @@ package com.sports.sportfield.domain.user;
 import com.sports.sportfield.domain.contact.Contact;
 import com.sports.sportfield.domain.contact.ContactRepository;
 import com.sports.sportfield.domain.contact.ContactService;
-import com.sports.sportfield.service.fieldbooking.NewFieldBookingDto;
 import com.sports.sportfield.service.login.LogInRequest;
 import com.sports.sportfield.validation.ValidationService;
 import org.springframework.stereotype.Service;
@@ -62,8 +61,7 @@ public class UserService {
         return user.get();
     }
 
-    public User getUserById(NewFieldBookingDto request) {
-        User user = userRepository.getById(request.getUserId());
-        return user;
+    public User getUserById(Integer userId) {
+        return userRepository.getById(userId);
     }
 }

@@ -1,9 +1,8 @@
-package com.sports.sportfield.domain.fieldavailability;
+package com.sports.sportfield.domain.field.fieldavailability;
 
-import com.sports.sportfield.domain.field.Field;
+import com.sports.sportfield.domain.field.field.Field;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 import java.time.LocalDate;

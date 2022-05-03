@@ -1,10 +1,9 @@
-package com.sports.sportfield.domain.field;
+package com.sports.sportfield.domain.field.field;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.Valid;
 import java.util.List;
 

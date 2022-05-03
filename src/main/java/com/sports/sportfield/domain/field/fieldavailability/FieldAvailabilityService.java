@@ -1,9 +1,9 @@
-package com.sports.sportfield.domain.fieldavailability;
+package com.sports.sportfield.domain.field.fieldavailability;
 
-import com.sports.sportfield.service.fieldbooking.BookingRequirementInfo;
-import com.sports.sportfield.service.fieldbooking.FieldBooking;
-import com.sports.sportfield.service.fieldbooking.FieldBookingRepository;
-import com.sports.sportfield.service.fieldbooking.TimeSlot;
+import com.sports.sportfield.service.bookings.BookingRequirementInfo;
+import com.sports.sportfield.domain.field.fieldbooking.FieldBooking;
+import com.sports.sportfield.domain.field.fieldbooking.FieldBookingRepository;
+import com.sports.sportfield.service.bookings.TimeSlot;
 import com.sports.sportfield.validation.ValidationService;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.sports.sportfield.service.fieldbooking;
+package com.sports.sportfield.service.bookings;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
@@ -9,21 +9,21 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/field-booking")
-public class FieldBookingController {
+public class BookingsController {
 
     @Resource
-    private FieldBookingService fieldBookingService;
+    private BookingsService bookingsService;
 
     @PostMapping
     @Operation(summary = "Näita vabu aegu FieldID ja kuupäeva järgi")
     public List<TimeSlot> getAvailableTimeSlots(@Valid @RequestBody BookingRequirementInfo infoRequest) {
-       return fieldBookingService.getAvailableTimeSlots(infoRequest);
+       return bookingsService.getAvailableTimeSlots(infoRequest);
     }
 
     @PostMapping("/new")
     @Operation(summary = "Lisa broneering")
     public void addBooking(@Valid @RequestBody  NewFieldBookingDto request ) {
-        fieldBookingService.addBooking(request);
+        bookingsService.addBooking(request);
     }
 
 

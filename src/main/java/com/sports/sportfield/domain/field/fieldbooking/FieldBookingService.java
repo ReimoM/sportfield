@@ -1,11 +1,18 @@
-package com.sports.sportfield.service.fieldbooking;
+package com.sports.sportfield.domain.field.fieldbooking;
 
+import com.sports.sportfield.domain.booking.Booking;
 import com.sports.sportfield.domain.booking.BookingService;
-import com.sports.sportfield.domain.fieldavailability.FieldAvailabilityService;
+import com.sports.sportfield.domain.field.fieldavailability.FieldAvailabilityService;
+import com.sports.sportfield.domain.field.fieldbooking.FieldBooking;
+import com.sports.sportfield.domain.field.fieldbooking.FieldBookingMapper;
+import com.sports.sportfield.domain.field.fieldbooking.FieldBookingRepository;
 import com.sports.sportfield.domain.sportsfield.SportsField;
 import com.sports.sportfield.domain.sportsfield.SportsFieldService;
 import com.sports.sportfield.domain.user.User;
 import com.sports.sportfield.domain.user.UserService;
+import com.sports.sportfield.service.bookings.BookingRequirementInfo;
+import com.sports.sportfield.service.bookings.NewFieldBookingDto;
+import com.sports.sportfield.service.bookings.TimeSlot;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -39,14 +46,20 @@ public class FieldBookingService {
     }
 
     public void addBooking(NewFieldBookingDto request) {
-        User user = userService.getUserById(request);
+        User user = userService.getUserById(request.getUserId());
         SportsField validSportsField = sportsFieldService.getValidSportsField(request.getSportsFieldId());
-        bookingService.addNewBooking(user.getId());
+        Booking booking = bookingService.addNewBooking(user);
         List<TimeSlot> timeSlots = request.getTimeSlots();
         ArrayList<FieldBooking> fieldBookings = new ArrayList<>();
         for (TimeSlot timeSlot : timeSlots) {
-            if (!timeSlot.isSelected()) {
-                
+            FieldBooking fieldBooking = new FieldBooking();
+            if (timeSlot.isSelected()) {
+                fieldBooking.setBooking(booking);
+                fieldBooking.setStartTimeHour(timeSlot.getStartTime());
+                fieldBooking.setDate(request.getDate());
+                fieldBooking.setEndTimeHour(timeSlot.getStartTime()+1);
+                fieldBooking.setSportsField(validSportsField);
+                fieldBookings.add(fieldBooking);
             }
 
         }
@@ -56,7 +69,7 @@ public class FieldBookingService {
         // nopi valja timeSlots listist kõik need objektid millel 'selected' on true
         // tee nendest objektidest List <FieldBooking> list (täida ära kõik info
         // salvesta andmed - fieldBookingRepository.saveAll()
-        FieldBooking fieldBooking = fieldBookingMapper.toEntity(request);
-        fieldBookingRepository.save(fieldBooking);
+
+        fieldBookingRepository.saveAll(fieldBookings);
     }
 }

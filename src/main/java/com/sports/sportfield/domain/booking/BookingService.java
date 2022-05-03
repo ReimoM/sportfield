@@ -1,5 +1,6 @@
 package com.sports.sportfield.domain.booking;
 
+import com.sports.sportfield.domain.user.User;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -8,14 +9,12 @@ import javax.annotation.Resource;
 public class BookingService {
 
     @Resource
-    private BookingMapper bookingMapper;
-
-    @Resource
     private BookingRepository bookingRepository;
 
-    public void addNewBooking(Integer userId) {
+    public Booking addNewBooking(User user) {
         Booking booking = new Booking();
-        booking.setId(userId);
+        booking.setUser(user);
         bookingRepository.save(booking);
+        return booking;
     }
 }

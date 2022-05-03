@@ -1,7 +1,7 @@
 package com.sports.sportfield.domain.sportsfield;
 
-import com.sports.sportfield.domain.field.Field;
-import com.sports.sportfield.domain.field.FieldRepository;
+import com.sports.sportfield.domain.field.field.Field;
+import com.sports.sportfield.domain.field.field.FieldRepository;
 import com.sports.sportfield.domain.sports.Sports;
 import com.sports.sportfield.domain.sports.SportsRepository;
 

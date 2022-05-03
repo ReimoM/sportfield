@@ -1,6 +1,5 @@
 package com.sports.sportfield.validation;
 
-import com.sports.sportfield.domain.fieldavailability.FieldAvailability;
 import com.sports.sportfield.domain.user.User;
 import com.sports.sportfield.infrastructure.exception.BusinessException;
 import com.sports.sportfield.infrastructure.exception.DataNotFoundException;

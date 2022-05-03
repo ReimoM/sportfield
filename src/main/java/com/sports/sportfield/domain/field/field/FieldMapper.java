@@ -1,4 +1,4 @@
-package com.sports.sportfield.domain.field;
+package com.sports.sportfield.domain.field.field;
 
 import org.mapstruct.*;
 

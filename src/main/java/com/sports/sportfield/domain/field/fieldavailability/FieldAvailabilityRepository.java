@@ -1,4 +1,4 @@
-package com.sports.sportfield.domain.fieldavailability;
+package com.sports.sportfield.domain.field.fieldavailability;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

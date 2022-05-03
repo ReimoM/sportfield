@@ -1,4 +1,4 @@
-package com.sports.sportfield.domain.fieldavailability;
+package com.sports.sportfield.domain.field.fieldavailability;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;

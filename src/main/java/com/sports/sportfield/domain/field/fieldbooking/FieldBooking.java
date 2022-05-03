@@ -1,4 +1,4 @@
-package com.sports.sportfield.service.fieldbooking;
+package com.sports.sportfield.domain.field.fieldbooking;
 
 import com.sports.sportfield.domain.booking.Booking;
 import com.sports.sportfield.domain.sportsfield.SportsField;

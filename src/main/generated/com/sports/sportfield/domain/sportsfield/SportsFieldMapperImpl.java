@@ -1,6 +1,6 @@
 package com.sports.sportfield.domain.sportsfield;
 
-import com.sports.sportfield.domain.field.Field;
+import com.sports.sportfield.domain.field.field.Field;
 import com.sports.sportfield.domain.sports.Sports;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-02T16:03:04+0300",
+    date = "2022-05-03T13:34:57+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 16.0.2 (Amazon.com Inc.)"
 )
 @Component

@@ -1,4 +1,4 @@
-package com.sports.sportfield.service.fieldbooking;
+package com.sports.sportfield.domain.field.fieldbooking;
 
 import lombok.Data;
 
