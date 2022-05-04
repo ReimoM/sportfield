@@ -33,7 +33,6 @@ public class UserService {
     public UserDto addNewUser(UserDto userDto) {
         User user = userMapper.toEntity(userDto);
         Contact contact = user.getContact();
-        role.setName("kasutaja");
         contactRepository.save(contact);
         boolean userNameExists = userRepository.existsByUsername(userDto.getUsername());
         validationService.userNameExists(userDto.getUsername(), userNameExists);

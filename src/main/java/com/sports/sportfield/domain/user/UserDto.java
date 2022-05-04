@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Data
 public class UserDto implements Serializable {
     private Integer id;
-    private Integer roleId;
+    private Integer roleId = 1;
     private String contactFirstName;
     private String contactLastName;
     private String contactTelephone;
