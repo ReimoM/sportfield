@@ -20,11 +20,11 @@ public class LogInService {
 
     public LogInResponse getValidUser(LogInRequest request) {
         User user = userService.getValidUser(request);
-        Role role = roleService.getUserRoleById(user.getId());
+
 
         LogInResponse response = new LogInResponse();
         response.setUserId(user.getId());
-        response.setRoleId(role.getId());
+        response.setRoleId(user.getRole());
 
         return response;
     }

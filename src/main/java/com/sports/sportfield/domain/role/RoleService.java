@@ -12,8 +12,8 @@ public class RoleService {
     @Resource
     private RoleRepository roleRepository;
 
-    public Role getUserRoleById(Integer id) {
-    return roleRepository.findByUserId(id);
-
-    }
+//    public Role getUserRoleById(Integer id) {
+//    return roleRepository.findByUserId(id);
+//
+//    }
 }
