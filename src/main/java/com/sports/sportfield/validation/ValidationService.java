@@ -13,6 +13,7 @@ public class ValidationService {
 
     public static final String ACCOUNT_NOT_EXISTS = "Incorrect details";
     public static final String CLOSED = "Oleme sellel kuupäeval suletud.";
+    public static final String KASUTAJANIMI = "Kasutajanimi on juba kasutusel";
 
     public void userExists(Optional<User> user) {
         if (user.isEmpty()) {
@@ -22,6 +23,13 @@ public class ValidationService {
     public void isClosed(Boolean isOpen) {
         if (!isOpen)
             throw new BusinessException(CLOSED, "Vabandame ebamugavuste pärast");
+    }
+
+
+    public void userNameExists(String username, boolean userNameExists) {
+        if (userNameExists) {
+            throw new BusinessException(KASUTAJANIMI, "Sisetage uus kasutajanimi");
+        }
     }
 }
 
