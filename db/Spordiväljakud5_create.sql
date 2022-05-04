@@ -80,7 +80,6 @@ CREATE TABLE picture_field (
 CREATE TABLE role (
     id serial  NOT NULL,
     name varchar(255)  NOT NULL,
-    user_id int  NOT NULL,
     CONSTRAINT role_pk PRIMARY KEY (id)
 );
 
@@ -103,6 +102,7 @@ CREATE TABLE sports_field (
 CREATE TABLE "user" (
     id serial  NOT NULL,
     contact_id int  NOT NULL,
+    role_id int  NOT NULL,
     username varchar(250)  NOT NULL,
     password varchar(50)  NOT NULL,
     CONSTRAINT user_pk PRIMARY KEY (id)
@@ -165,10 +165,10 @@ ALTER TABLE picture_field ADD CONSTRAINT picture_field_picture
     INITIALLY IMMEDIATE
 ;
 
--- Reference: role_user (table: role)
-ALTER TABLE role ADD CONSTRAINT role_user
-    FOREIGN KEY (user_id)
-    REFERENCES "user" (id)  
+-- Reference: user_role (table: user)
+ALTER TABLE user ADD CONSTRAINT user_role
+    FOREIGN KEY (role_id)
+    REFERENCES "role" (id)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;

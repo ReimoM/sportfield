@@ -3,6 +3,7 @@ package com.sports.sportfield.domain.user;
 import com.sports.sportfield.domain.contact.Contact;
 import com.sports.sportfield.domain.contact.ContactRepository;
 import com.sports.sportfield.domain.contact.ContactService;
+import com.sports.sportfield.domain.role.Role;
 import com.sports.sportfield.service.login.LogInRequest;
 import com.sports.sportfield.validation.ValidationService;
 import org.springframework.stereotype.Service;
@@ -32,9 +33,11 @@ public class UserService {
     public UserDto addNewUser(UserDto userDto) {
         User user = userMapper.toEntity(userDto);
         Contact contact = user.getContact();
+        role.setName("kasutaja");
         contactRepository.save(contact);
         boolean userNameExists = userRepository.existsByUsername(userDto.getUsername());
         validationService.userNameExists(userDto.getUsername(), userNameExists);
+
         userRepository.save(user);
         return userMapper.toDto(user);
     }
