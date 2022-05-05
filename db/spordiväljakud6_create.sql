@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-04-28 13:16:06.298
+-- Last modification date: 2022-05-05 06:27:27.029
 
 -- tables
 -- Table: booking
@@ -70,7 +70,7 @@ CREATE TABLE picture (
 -- Table: picture_field
 CREATE TABLE picture_field (
     id serial  NOT NULL,
-    field_id int  NOT NULL,
+    field_id serial  NOT NULL,
     picture_id int  NOT NULL,
     title varchar(255)  NULL,
     CONSTRAINT picture_field_pk PRIMARY KEY (id)
@@ -101,8 +101,8 @@ CREATE TABLE sports_field (
 -- Table: user
 CREATE TABLE "user" (
     id serial  NOT NULL,
-    contact_id int  NOT NULL,
     role_id int  NOT NULL,
+    contact_id int  NOT NULL,
     username varchar(250)  NOT NULL,
     password varchar(50)  NOT NULL,
     CONSTRAINT user_pk PRIMARY KEY (id)
@@ -165,14 +165,6 @@ ALTER TABLE picture_field ADD CONSTRAINT picture_field_picture
     INITIALLY IMMEDIATE
 ;
 
--- Reference: user_role (table: user)
-ALTER TABLE user ADD CONSTRAINT user_role
-    FOREIGN KEY (role_id)
-    REFERENCES "role" (id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
-;
-
 -- Reference: sports_field_field (table: sports_field)
 ALTER TABLE sports_field ADD CONSTRAINT sports_field_field
     FOREIGN KEY (field_id)
@@ -193,6 +185,14 @@ ALTER TABLE sports_field ADD CONSTRAINT sports_field_sports
 ALTER TABLE "user" ADD CONSTRAINT user_contact
     FOREIGN KEY (contact_id)
     REFERENCES contact (id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: user_role (table: user)
+ALTER TABLE "user" ADD CONSTRAINT user_role
+    FOREIGN KEY (role_id)
+    REFERENCES role (id)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;
