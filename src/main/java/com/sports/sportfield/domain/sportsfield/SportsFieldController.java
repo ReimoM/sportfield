@@ -1,5 +1,6 @@
 package com.sports.sportfield.domain.sportsfield;
 
+import com.sports.sportfield.domain.sports.SportsDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,12 @@ public class SportsFieldController {
     @Operation(summary = "Leia sprodiväljak ID järgi")
     public SportsFieldDto findSportsFieldById(@RequestParam Integer id) {
         return sportsFieldService.findSportsFieldById(id);
+    }
+
+    @GetMapping("/fieldId")
+    @Operation(summary = "Leia sprodiväljak väljaku ID järgi")
+    public List<SportsFieldDto> findSportsByFieldId(@RequestParam Integer fieldId) {
+        return sportsFieldService.findSportsByFieldId(fieldId);
     }
 
     @PostMapping

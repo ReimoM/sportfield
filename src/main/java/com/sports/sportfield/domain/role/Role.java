@@ -1,6 +1,5 @@
 package com.sports.sportfield.domain.role;
 
-import com.sports.sportfield.domain.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,9 +17,5 @@ public class Role {
 
     @Column(name = "name", nullable = false)
     private String name;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
 
 }

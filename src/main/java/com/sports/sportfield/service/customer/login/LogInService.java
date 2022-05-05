@@ -1,31 +1,25 @@
-package com.sports.sportfield.service.login;
+package com.sports.sportfield.service.customer.login;
 
 import com.sports.sportfield.domain.role.Role;
-import com.sports.sportfield.domain.role.RoleService;
 import com.sports.sportfield.domain.user.User;
 import com.sports.sportfield.domain.user.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Optional;
 
 @Service
 public class LogInService {
 
     @Resource
     private UserService userService;
-    @Resource
-    private RoleService roleService;
+
 
 
     public LogInResponse getValidUser(LogInRequest request) {
         User user = userService.getValidUser(request);
-        Role role = roleService.getUserRoleById(user.getId());
-
         LogInResponse response = new LogInResponse();
         response.setUserId(user.getId());
-        response.setRoleId(role.getId());
-
+        response.setRoleId(user.getRole().getId());
         return response;
     }
 }

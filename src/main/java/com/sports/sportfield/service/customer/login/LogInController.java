@@ -1,11 +1,9 @@
-package com.sports.sportfield.service.login;
+package com.sports.sportfield.service.customer.login;
 
 
-import com.sports.sportfield.domain.user.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/login")

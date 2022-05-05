@@ -1,6 +1,6 @@
 package com.sports.sportfield.domain.field.fieldbooking;
 
-import com.sports.sportfield.service.bookings.NewFieldBookingDto;
+import com.sports.sportfield.service.customer.bookings.NewFieldBookingDto;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")

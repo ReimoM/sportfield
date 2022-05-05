@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-04T10:13:55+0300",
+    date = "2022-05-05T15:21:22+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 16.0.2 (Amazon.com Inc.)"
 )
 @Component
@@ -23,7 +23,6 @@ public class UserMapperImpl implements UserMapper {
         User user = new User();
 
         user.setContact( userDtoToContact( userDto ) );
-        user.setId( userDto.getId() );
         user.setUsername( userDto.getUsername() );
         user.setPassword( userDto.getPassword() );
 
@@ -38,11 +37,11 @@ public class UserMapperImpl implements UserMapper {
 
         UserDto userDto = new UserDto();
 
+        userDto.setUserId( user.getId() );
         userDto.setContactFirstName( userContactFirstName( user ) );
         userDto.setContactLastName( userContactLastName( user ) );
         userDto.setContactTelephone( userContactTelephone( user ) );
         userDto.setContactEmail( userContactEmail( user ) );
-        userDto.setId( user.getId() );
         userDto.setUsername( user.getUsername() );
         userDto.setPassword( user.getPassword() );
 
@@ -73,9 +72,6 @@ public class UserMapperImpl implements UserMapper {
             user.setContact( new Contact() );
         }
         userDtoToContact1( userDto, user.getContact() );
-        if ( userDto.getId() != null ) {
-            user.setId( userDto.getId() );
-        }
         if ( userDto.getUsername() != null ) {
             user.setUsername( userDto.getUsername() );
         }
