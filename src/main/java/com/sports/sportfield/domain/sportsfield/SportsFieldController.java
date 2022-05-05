@@ -26,7 +26,12 @@ public class SportsFieldController {
     public SportsFieldDto findSportsFieldById(@RequestParam Integer id) {
         return sportsFieldService.findSportsFieldById(id);
     }
-    
+
+    @GetMapping("/fieldId")
+    @Operation(summary = "Leia sprodiväljak väljaku ID järgi")
+    public List<SportsFieldDto> findSportsByFieldId(@RequestParam Integer fieldId) {
+        return sportsFieldService.findSportsByFieldId(fieldId);
+    }
 
     @PostMapping
     @Operation(summary = "Lisa spordiväljak")

@@ -35,6 +35,11 @@ public class SportsFieldService {
         return sportsFieldMapper.toDto(sportsField);
     }
 
+    public List<SportsFieldDto>  findSportsByFieldId(Integer fieldId) {
+        List<SportsField> sportsFields = sportsFieldRepository.findByFieldId(fieldId);
+        return sportsFieldMapper.toDtos(sportsFields);
+    }
+
     public SportsField getValidSportsField(Integer sportFieldId) {
         SportsField sportsField = sportsFieldRepository.getById(sportFieldId);
         return sportsField;
