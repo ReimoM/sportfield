@@ -11,13 +11,13 @@ import java.util.Optional;
 public class ValidationService {
 
 
-    public static final String ACCOUNT_NOT_EXISTS = "Incorrect details";
+    public static final String ACCOUNT_NOT_EXISTS = "Sisselogimine ebaõnnestus";
     public static final String CLOSED = "Oleme sellel kuupäeval suletud.";
     public static final String KASUTAJANIMI = "Kasutajanimi on juba kasutusel";
 
     public void userExists(Optional<User> user) {
         if (user.isEmpty()) {
-            throw new DataNotFoundException(ACCOUNT_NOT_EXISTS, "Kasutaja puudub, tehke kasutaja");
+            throw new DataNotFoundException(ACCOUNT_NOT_EXISTS, "Vale kasutajanimi või parool");
         }
     }
     public void isClosed(Boolean isOpen) {
