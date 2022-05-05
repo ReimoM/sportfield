@@ -1,4 +1,4 @@
-package com.sports.sportfield.service.bookings;
+package com.sports.sportfield.service.customer.bookings;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;

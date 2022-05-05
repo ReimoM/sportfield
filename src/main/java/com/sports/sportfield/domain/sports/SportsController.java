@@ -27,6 +27,7 @@ public class SportsController {
     }
 
 
+
     @PostMapping
     @Operation(summary = "Lisa uus spordiala")
     public SportsDto addNewSports(@Valid @RequestBody SportsDto sportsDto) {
@@ -44,4 +45,6 @@ public class SportsController {
     public void updateSportsById(@RequestParam Integer sportsId, @Valid @RequestBody SportsDto sportsDto) {
         sportsService.updateSportsById(sportsId, sportsDto);
     }
+
+
 }

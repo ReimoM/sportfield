@@ -26,6 +26,7 @@ public class SportsService {
         return sportsMapper.toDto(sports);
     }
 
+
     public List<SportsDto> findAllSports() {
         List<Sports> sports = sportsRepository.findAll();
         return sportsMapper.toDtos(sports);

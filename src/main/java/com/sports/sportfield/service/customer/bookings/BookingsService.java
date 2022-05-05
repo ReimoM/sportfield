@@ -1,4 +1,4 @@
-package com.sports.sportfield.service.bookings;
+package com.sports.sportfield.service.customer.bookings;
 
 import com.sports.sportfield.domain.field.fieldbooking.FieldBookingService;
 import org.springframework.stereotype.Service;

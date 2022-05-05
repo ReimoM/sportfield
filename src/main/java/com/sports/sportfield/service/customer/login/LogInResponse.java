@@ -1,4 +1,4 @@
-package com.sports.sportfield.service.login;
+package com.sports.sportfield.service.customer.login;
 
 import lombok.Data;
 

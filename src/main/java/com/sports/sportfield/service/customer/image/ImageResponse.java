@@ -1,4 +1,4 @@
-package com.sports.sportfield.service.image;
+package com.sports.sportfield.service.customer.image;
 
 import lombok.Data;
 

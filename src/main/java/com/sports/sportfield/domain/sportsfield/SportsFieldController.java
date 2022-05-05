@@ -1,5 +1,6 @@
 package com.sports.sportfield.domain.sportsfield;
 
+import com.sports.sportfield.domain.sports.SportsDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,7 @@ public class SportsFieldController {
     public SportsFieldDto findSportsFieldById(@RequestParam Integer id) {
         return sportsFieldService.findSportsFieldById(id);
     }
+    
 
     @PostMapping
     @Operation(summary = "Lisa spordiväljak")
