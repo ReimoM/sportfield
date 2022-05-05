@@ -26,8 +26,6 @@ public class SportsController {
         return sportsService.findSportsById(id);
     }
 
-
-
     @PostMapping
     @Operation(summary = "Lisa uus spordiala")
     public SportsDto addNewSports(@Valid @RequestBody SportsDto sportsDto) {
