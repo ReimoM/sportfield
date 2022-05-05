@@ -36,7 +36,6 @@ public class UserService {
         contactRepository.save(contact);
         boolean userNameExists = userRepository.existsByUsername(userDto.getUsername());
         validationService.userNameExists(userDto.getUsername(), userNameExists);
-
         userRepository.save(user);
         return userMapper.toDto(user);
     }

@@ -24,7 +24,6 @@ public class SportsService {
     public SportsDto findSportsById(Integer id) {
         Sports sports = sportsRepository.getById(id);
         return sportsMapper.toDto(sports);
-
     }
 
     public List<SportsDto> findAllSports() {
@@ -40,7 +39,6 @@ public class SportsService {
         Sports sports = sportsRepository.getById(sportsId);
         sportsMapper.updateEntity(sportsDto, sports);
         sportsRepository.save(sports);
-
     }
 
 

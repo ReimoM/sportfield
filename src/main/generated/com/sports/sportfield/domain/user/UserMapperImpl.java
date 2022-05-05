@@ -1,6 +1,7 @@
 package com.sports.sportfield.domain.user;
 
 import com.sports.sportfield.domain.contact.Contact;
+import com.sports.sportfield.domain.role.Role;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-04T15:38:48+0300",
+    date = "2022-05-05T10:17:43+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 16.0.2 (Amazon.com Inc.)"
 )
 @Component
@@ -23,6 +24,7 @@ public class UserMapperImpl implements UserMapper {
         User user = new User();
 
         user.setContact( userDtoToContact( userDto ) );
+        user.setRole( userDtoToRole( userDto ) );
         user.setId( userDto.getId() );
         user.setUsername( userDto.getUsername() );
         user.setPassword( userDto.getPassword() );
@@ -42,6 +44,7 @@ public class UserMapperImpl implements UserMapper {
         userDto.setContactLastName( userContactLastName( user ) );
         userDto.setContactTelephone( userContactTelephone( user ) );
         userDto.setContactEmail( userContactEmail( user ) );
+        userDto.setRoleId( userRoleId( user ) );
         userDto.setId( user.getId() );
         userDto.setUsername( user.getUsername() );
         userDto.setPassword( user.getPassword() );
@@ -73,6 +76,10 @@ public class UserMapperImpl implements UserMapper {
             user.setContact( new Contact() );
         }
         userDtoToContact1( userDto, user.getContact() );
+        if ( user.getRole() == null ) {
+            user.setRole( new Role() );
+        }
+        userDtoToRole1( userDto, user.getRole() );
         if ( userDto.getId() != null ) {
             user.setId( userDto.getId() );
         }
@@ -97,6 +104,18 @@ public class UserMapperImpl implements UserMapper {
         contact.setEmail( userDto.getContactEmail() );
 
         return contact;
+    }
+
+    protected Role userDtoToRole(UserDto userDto) {
+        if ( userDto == null ) {
+            return null;
+        }
+
+        Role role = new Role();
+
+        role.setId( userDto.getRoleId() );
+
+        return role;
     }
 
     private String userContactFirstName(User user) {
@@ -159,6 +178,21 @@ public class UserMapperImpl implements UserMapper {
         return email;
     }
 
+    private Integer userRoleId(User user) {
+        if ( user == null ) {
+            return null;
+        }
+        Role role = user.getRole();
+        if ( role == null ) {
+            return null;
+        }
+        Integer id = role.getId();
+        if ( id == null ) {
+            return null;
+        }
+        return id;
+    }
+
     protected void userDtoToContact1(UserDto userDto, Contact mappingTarget) {
         if ( userDto == null ) {
             return;
@@ -175,6 +209,16 @@ public class UserMapperImpl implements UserMapper {
         }
         if ( userDto.getContactEmail() != null ) {
             mappingTarget.setEmail( userDto.getContactEmail() );
+        }
+    }
+
+    protected void userDtoToRole1(UserDto userDto, Role mappingTarget) {
+        if ( userDto == null ) {
+            return;
+        }
+
+        if ( userDto.getRoleId() != null ) {
+            mappingTarget.setId( userDto.getRoleId() );
         }
     }
 }

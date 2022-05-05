@@ -1,6 +1,5 @@
 package com.sports.sportfield.domain.role;
 
-import com.sports.sportfield.domain.user.User;
 import lombok.Getter;
 import lombok.Setter;
 

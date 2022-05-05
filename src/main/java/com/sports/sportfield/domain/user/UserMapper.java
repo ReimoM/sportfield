@@ -11,6 +11,7 @@ public interface UserMapper {
     @Mapping(source = "contactLastName", target = "contact.lastName")
     @Mapping(source = "contactTelephone", target = "contact.telephone")
     @Mapping(source = "contactEmail", target = "contact.email")
+    @Mapping(source = "roleId", target = "role.id")
     User toEntity(UserDto userDto);
 
     @InheritInverseConfiguration(name = "toEntity")
