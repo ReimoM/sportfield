@@ -1,6 +1,7 @@
 package com.sports.sportfield.domain.field.fieldbooking;
 
-import com.sports.sportfield.service.customer.bookings.NewFieldBookingDto;
+import com.sports.sportfield.domain.booking.Booking;
+import com.sports.sportfield.domain.sportsfield.SportsField;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -8,14 +9,14 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-06T11:21:12+0300",
+    date = "2022-05-06T19:01:03+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.14.1 (Amazon.com Inc.)"
 )
 @Component
 public class FieldBookingMapperImpl implements FieldBookingMapper {
 
     @Override
-    public FieldBooking toEntity(NewFieldBookingDto fieldBookingDto) {
+    public FieldBooking toEntity(FieldBookingDto fieldBookingDto) {
         if ( fieldBookingDto == null ) {
             return null;
         }
@@ -23,6 +24,8 @@ public class FieldBookingMapperImpl implements FieldBookingMapper {
         FieldBooking fieldBooking = new FieldBooking();
 
         fieldBooking.setDate( fieldBookingDto.getDate() );
+        fieldBooking.setStartTimeHour( fieldBookingDto.getStartTimeHour() );
+        fieldBooking.setEndTimeHour( fieldBookingDto.getEndTimeHour() );
 
         return fieldBooking;
     }
@@ -35,6 +38,8 @@ public class FieldBookingMapperImpl implements FieldBookingMapper {
 
         FieldBookingDto fieldBookingDto = new FieldBookingDto();
 
+        fieldBookingDto.setBookingId( fieldBookingBookingId( fieldBooking ) );
+        fieldBookingDto.setSportsFieldId( fieldBookingSportsFieldId( fieldBooking ) );
         fieldBookingDto.setDate( fieldBooking.getDate() );
         fieldBookingDto.setStartTimeHour( fieldBooking.getStartTimeHour() );
         fieldBookingDto.setEndTimeHour( fieldBooking.getEndTimeHour() );
@@ -71,5 +76,35 @@ public class FieldBookingMapperImpl implements FieldBookingMapper {
         if ( fieldBookingDto.getEndTimeHour() != null ) {
             fieldBooking.setEndTimeHour( fieldBookingDto.getEndTimeHour() );
         }
+    }
+
+    private Integer fieldBookingBookingId(FieldBooking fieldBooking) {
+        if ( fieldBooking == null ) {
+            return null;
+        }
+        Booking booking = fieldBooking.getBooking();
+        if ( booking == null ) {
+            return null;
+        }
+        Integer id = booking.getId();
+        if ( id == null ) {
+            return null;
+        }
+        return id;
+    }
+
+    private Integer fieldBookingSportsFieldId(FieldBooking fieldBooking) {
+        if ( fieldBooking == null ) {
+            return null;
+        }
+        SportsField sportsField = fieldBooking.getSportsField();
+        if ( sportsField == null ) {
+            return null;
+        }
+        Integer id = sportsField.getId();
+        if ( id == null ) {
+            return null;
+        }
+        return id;
     }
 }

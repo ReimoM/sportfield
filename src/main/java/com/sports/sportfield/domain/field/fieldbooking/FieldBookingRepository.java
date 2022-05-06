@@ -13,4 +13,9 @@ public interface FieldBookingRepository extends JpaRepository<FieldBooking, Inte
     @Query("select f from FieldBooking f where f.booking.user.id = ?1")
     List<FieldBooking> findByUserId(Integer id);
 
+    @Query("select f from FieldBooking f where f.booking.user.id = ?1")
+    List<FieldBooking> findByBooking_User_Id(Integer id);
+
+
+
 }
