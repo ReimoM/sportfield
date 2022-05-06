@@ -8,7 +8,6 @@ import com.sports.sportfield.domain.sportsfield.SportsFieldService;
 import com.sports.sportfield.domain.user.User;
 import com.sports.sportfield.domain.user.UserService;
 import com.sports.sportfield.service.customer.bookings.BookingRequirementInfo;
-import com.sports.sportfield.service.customer.bookings.BookingStatementResponse;
 import com.sports.sportfield.service.customer.bookings.NewFieldBookingDto;
 import com.sports.sportfield.service.customer.bookings.TimeSlot;
 import org.springframework.stereotype.Service;

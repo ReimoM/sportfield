@@ -10,4 +10,7 @@ public interface SportsFieldRepository extends JpaRepository<SportsField, Intege
     @Query("select s from SportsField s where s.field.id = ?1")
     List<SportsField> findByFieldId(Integer id);
 
+
+
+
 }

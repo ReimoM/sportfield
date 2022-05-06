@@ -27,8 +27,8 @@ public class BookingsController {
     }
 
     @GetMapping("/id")
-    @Operation(summary = "Leia broneering id järgi")
-    public BookingStatementResponse getFieldBookingsByUserId(@RequestParam Integer userId) {
+    @Operation(summary = "Leia broneering kasutaja id järgi")
+    public List<BookingStatement> getFieldBookingsByUserId(@RequestParam Integer userId) {
     return bookingsService.getFieldBookingsById(userId);
     }
 
