@@ -61,12 +61,6 @@ public class FieldBookingService {
             }
 
         }
-        // leia User läbi userId (getValidUser)
-        // leia SportField läbi sportFieldId (getValidSportField)
-        // tee uus Booking kanne.
-        // nopi valja timeSlots listist kõik need objektid millel 'selected' on true
-        // tee nendest objektidest List <FieldBooking> list (täida ära kõik info
-        // salvesta andmed - fieldBookingRepository.saveAll()
 
         fieldBookingRepository.saveAll(fieldBookings);
     }
