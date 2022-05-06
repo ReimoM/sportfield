@@ -26,6 +26,12 @@ public class BookingsController {
         bookingsService.addBooking(request);
     }
 
+    @GetMapping("/id")
+    @Operation(summary = "Leia broneering id järgi")
+    public BookingStatementResponse getFieldBookingsByUserId(@RequestParam Integer userId) {
+    return bookingsService.getFieldBookingsById(userId);
+    }
+
 
 
 
