@@ -6,7 +6,8 @@ import java.time.LocalDate;
 
 @Data
 public class BookingRequirementInfo {
-    private Integer sportsFieldId;
+    private Integer fieldId;
+    private Integer sportFieldId;
     private LocalDate date;
 
 }

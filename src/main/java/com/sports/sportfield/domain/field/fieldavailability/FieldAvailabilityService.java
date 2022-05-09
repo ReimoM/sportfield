@@ -46,10 +46,10 @@ public class FieldAvailabilityService {
     public List<TimeSlot> findAllAvailableTimeSlots(BookingRequirementInfo requestInfo) {
         LocalDate dateRequired = requestInfo.getDate();
         Integer weekdayNumber = requestInfo.getDate().getDayOfWeek().getValue();
-        Integer fieldId = requestInfo.getSportsFieldId();
+        Integer fieldId = requestInfo.getFieldId();
         Optional<FieldAvailability> holidayAvailability = fieldAvailabilityRepository.findHolidayAvailability(fieldId, dateRequired);
         List<Integer> openHours = getOpenHours(weekdayNumber, fieldId, holidayAvailability);
-        List<Integer> bookedHours = getBookedHours(dateRequired, fieldId);
+        List<Integer> bookedHours = getBookedHours(dateRequired, requestInfo.getSportFieldId());
         List<Integer> availableHours = getAvailableHours(openHours, bookedHours);
         return getAvailableTimeSlots(availableHours);
     }
@@ -64,8 +64,8 @@ public class FieldAvailabilityService {
         return openHours;
     }
 
-    private List<Integer> getBookedHours(LocalDate dateRequired, Integer fieldId) {
-        List<FieldBooking> fieldBookings = fieldBookingRepository.findFieldBookings(fieldId, dateRequired);
+    private List<Integer> getBookedHours(LocalDate dateRequired, Integer sportsFieldId) {
+        List<FieldBooking> fieldBookings = fieldBookingRepository.findFieldBookings(sportsFieldId, dateRequired);
         List<Integer> bookedHours = new ArrayList<>();
         for (FieldBooking fieldBooking : fieldBookings) {
             bookedHours.add(fieldBooking.getStartTimeHour());
