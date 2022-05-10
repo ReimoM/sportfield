@@ -29,37 +29,37 @@ public class FieldsController {
         return fieldsService.findAllFields();
     }
 
-    @GetMapping("/id")
+    @GetMapping("/field-id")
     @Operation(summary = "Näita väljakut ID järgi")
     public FieldDto findFieldById(@RequestParam Integer id) {
         return fieldsService.findFieldById(id);
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/field-id")
     @Operation(summary = "Kustuta väljak")
     public void removeFieldById(@RequestParam Integer id) {
         fieldsService.removeFieldById(id);
     }
 
-    @PutMapping("/id")
+    @PutMapping("/field-id")
     @Operation(summary = "Muuda väljaku infot")
     public void updateFieldById(@RequestParam Integer id, @Valid @RequestBody FieldDto fieldDto) {
         fieldsService.updateFieldById(id, fieldDto);
     }
 
-    @PostMapping("/new")
+    @PostMapping()
     @Operation(summary = "Lisa väljaku lahtiolekuajad")
     public void addAvailability(@RequestBody @Valid FieldAvailabilityDto availabilityDto) {
         fieldsService.addAvailability(availabilityDto);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/field-availability")
     @Operation(summary = "Kustutab väljaku lahtiolekuaja")
     public void removeFieldAvailability(@RequestParam Integer id) {
         fieldsService.removeFieldAvailability(id);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/field-availability")
     @Operation(summary = "Uuendab väljaku lahtiolekuaegu")
     public void updateFieldAvailability(@RequestParam Integer id, @RequestBody FieldAvailabilityDto fieldAvailabilityDto) {
         fieldsService.updateFiledAvailability(id, fieldAvailabilityDto);
@@ -77,7 +77,7 @@ public class FieldsController {
         return fieldsService.findSportsFieldById(id);
     }
 
-    @GetMapping("/fieldId")
+    @GetMapping("/sportsfield")
     @Operation(summary = "Leia sprodiväljak väljaku ID järgi")
     public List<SportsFieldDto> findSportsByFieldId(@RequestParam Integer fieldId) {
         return fieldsService.findSportsByFieldId(fieldId);

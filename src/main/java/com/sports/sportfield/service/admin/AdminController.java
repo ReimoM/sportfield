@@ -18,31 +18,31 @@ public class AdminController {
     @Resource
     private AdminService adminService;
 
-    @PostMapping("/add")
+    @PostMapping("/user")
     @Operation(summary = "Lisab uue kasutaja")
     public UserDto addNewUser(@RequestBody UserDto userDto) {
         return adminService.addNewUser(userDto);
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/user-id")
     @Operation(summary = "kustutab kasutaja koos kontaktiga id järgi")
     public void deleteUserById(@RequestParam Integer id) {
         adminService.deleteUserById(id);
     }
 
-    @GetMapping("/id")
+    @GetMapping("/user-id")
     @Operation(summary = "leiab kasutaja id järgi")
     public UserDto findUserById(@RequestParam Integer id) {
         return adminService.findUserById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/all-users")
     @Operation(summary = "kuvab kõik kasutajad ja paroolid")
     public List<UserDto> findAllUsers() {
         return adminService.findAllUsers();
     }
 
-    @PostMapping
+    @PostMapping("/location")
     @Operation(summary = "Lisab uue asukoha")
     public LocationDto addNewLocation(@RequestBody @Valid LocationDto locationDto) {
         return adminService.addNewLocation(locationDto);
@@ -60,7 +60,7 @@ public class AdminController {
         return adminService.findAllLocations();
     }
 
-    @PutMapping("/id")
+    @PutMapping("/location-id")
     @Operation(summary = "Uuendab asukohta ID järgi")
     public void updateLocationById(@RequestParam Integer id, @RequestBody @Valid LocationDto locationDto) {
         adminService.updateLocationById(id, locationDto);
@@ -77,7 +77,7 @@ public class AdminController {
         return adminService.findAllSports();
     }
 
-    @GetMapping("/sportsid")
+    @GetMapping("/sports-id")
     @Operation(summary = "Näita spordiala ID järgi")
     public SportsDto findSportsById(@RequestParam Integer id) {
         return adminService.findSportsById(id);
