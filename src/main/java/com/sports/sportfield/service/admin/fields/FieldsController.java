@@ -47,7 +47,7 @@ public class FieldsController {
         fieldsService.updateFieldById(id, fieldDto);
     }
 
-    @PostMapping()
+    @PostMapping("/field-availability")
     @Operation(summary = "Lisa väljaku lahtiolekuajad")
     public void addAvailability(@RequestBody @Valid FieldAvailabilityDto availabilityDto) {
         fieldsService.addAvailability(availabilityDto);
