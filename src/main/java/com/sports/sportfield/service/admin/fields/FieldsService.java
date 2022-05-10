@@ -4,6 +4,8 @@ import com.sports.sportfield.domain.field.field.FieldDto;
 import com.sports.sportfield.domain.field.field.FieldService;
 import com.sports.sportfield.domain.field.fieldavailability.FieldAvailabilityDto;
 import com.sports.sportfield.domain.field.fieldavailability.FieldAvailabilityService;
+import com.sports.sportfield.domain.sportsfield.SportsFieldDto;
+import com.sports.sportfield.domain.sportsfield.SportsFieldService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,6 +18,9 @@ public class FieldsService {
 
     @Resource
     private FieldAvailabilityService fieldAvailabilityService;
+
+    @Resource
+    private SportsFieldService sportsFieldService;
 
     public FieldDto addNewField(FieldDto fieldDto) {
         return fieldService.addNewField(fieldDto);
@@ -47,5 +52,25 @@ public class FieldsService {
 
     public void updateFiledAvailability(Integer id, FieldAvailabilityDto fieldAvailabilityDto) {
         fieldAvailabilityService.updateFiledAvailability(id, fieldAvailabilityDto);
+    }
+
+    public List<SportsFieldDto> findAllSportsFields() {
+        return sportsFieldService.findAllSportsFields();
+    }
+
+    public SportsFieldDto findSportsFieldById(Integer id) {
+        return sportsFieldService.findSportsFieldById(id);
+    }
+
+    public List<SportsFieldDto> findSportsByFieldId(Integer fieldId) {
+        return sportsFieldService.findSportsByFieldId(fieldId);
+    }
+
+    public void addNewSportsField(Integer sportsId, Integer fieldId) {
+        sportsFieldService.addNewSportsField(sportsId, fieldId);
+    }
+
+    public void removeSportsFieldById(Integer id) {
+        sportsFieldService.removeSportsFieldById(id);
     }
 }
