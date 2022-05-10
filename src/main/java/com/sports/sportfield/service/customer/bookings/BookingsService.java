@@ -14,6 +14,7 @@ public class BookingsService {
 
     public List<TimeSlot> getAvailableTimeSlots(BookingRequirementInfo infoRequest) {
         return fieldBookingService.getAvailableTimeSlots(infoRequest);
+
     }
 
     public void addBooking(NewFieldBookingDto request) {
