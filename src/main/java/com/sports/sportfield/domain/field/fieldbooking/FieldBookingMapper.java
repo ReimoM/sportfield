@@ -7,11 +7,12 @@ import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface FieldBookingMapper {
-//    @Mapping(source = "bookingId", target = "booking.id")
-//    @Mapping(source = "sportsFieldId", target = "sportsField.id")
-    FieldBooking toEntity(NewFieldBookingDto fieldBookingDto);
+    @Mapping(target = "id", ignore = true)
+    FieldBooking toEntity(FieldBookingDto fieldBookingDto);
 
-    @InheritInverseConfiguration(name = "updateEntity")
+    @InheritInverseConfiguration(name = "toEntity")
+    @Mapping(target = "bookingId", source = "booking.id")
+    @Mapping(target = "sportsFieldId", source = "sportsField.id")
     FieldBookingDto toDto(FieldBooking fieldBooking);
 
     List<FieldBookingDto> toDtos(List<FieldBooking> fieldBookings);

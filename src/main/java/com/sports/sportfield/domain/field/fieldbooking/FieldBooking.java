@@ -34,5 +34,4 @@ public class FieldBooking {
 
     @Column(name = "end_time_hour", nullable = false)
     private Integer endTimeHour;
-
 }
