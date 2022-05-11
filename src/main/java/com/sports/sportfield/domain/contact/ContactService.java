@@ -2,6 +2,7 @@ package com.sports.sportfield.domain.contact;
 
 import com.sports.sportfield.domain.user.User;
 import com.sports.sportfield.domain.user.UserMapper;
+import com.sports.sportfield.domain.user.UserRepository;
 import com.sports.sportfield.domain.user.UserService;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,9 @@ public class ContactService {
 
     @Resource
     private ContactRepository contactRepository;
+
+    @Resource
+    private UserRepository userRepository;
 
     @Resource
     private UserService userService;
@@ -50,5 +54,6 @@ public class ContactService {
         Contact contact = user.getContact();
         contactMapper.updateEntity(contactDto, contact);
         contactRepository.save(contact);
+
     }
 }
