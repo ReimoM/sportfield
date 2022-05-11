@@ -39,8 +39,8 @@ INSERT INTO public.role (id, name) VALUES (DEFAULT, 'kasutaja');
 INSERT INTO public.role (id, name) VALUES (DEFAULT, 'admin');
 INSERT INTO public.user (id, contact_id, role_id, username, password) VALUES (DEFAULT, 1, 1, 'kyllilum', 'kyllilum');
 INSERT INTO public.user (id, contact_id, role_id, username, password) VALUES (DEFAULT, 2, 2, 'marjutamm', 'marjutamm');
-INSERT INTO public.user (id, contact_id, role_id, username, password) VALUES (DEFAULT, 2, 1, 'spordimees', 'parool15');
-INSERT INTO public.user (id, contact_id, role_id, username, password) VALUES (DEFAULT, 2, 1, 'spordipoiss', 'parool13');
+INSERT INTO public.user (id, contact_id, role_id, username, password) VALUES (DEFAULT, 3, 1, 'spordimees', 'parool15');
+INSERT INTO public.user (id, contact_id, role_id, username, password) VALUES (DEFAULT, 4, 1, 'spordipoiss', 'parool13');
 INSERT INTO public.sports_field (id, field_id, sports_id) VALUES (DEFAULT, 1, 1);
 INSERT INTO public.sports_field (id, field_id, sports_id) VALUES (DEFAULT, 1, 2);
 INSERT INTO public.sports_field (id, field_id, sports_id) VALUES (DEFAULT, 1, 3);
@@ -179,3 +179,12 @@ INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, e
 INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 11, null, null, null, '2022-05-01', false);
 INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 12, null, null, null, '2022-05-01', false);
 INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 13, null, null, null, '2022-05-01', false);
+INSERT INTO public.booking (id, user_id) VALUES (DEFAULT, 1);
+INSERT INTO public.booking (id, user_id) VALUES (DEFAULT, 2);
+INSERT INTO public.booking (id, user_id) VALUES (DEFAULT, 3);
+INSERT INTO public.field_booking (id, booking_id, sports_field_id, date, start_time_hour, end_time_hour)
+VALUES (DEFAULT, 1, 1, '2022-05-16', 12, 13);
+INSERT INTO public.field_booking (id, booking_id, sports_field_id, date, start_time_hour, end_time_hour)
+VALUES (DEFAULT, 2, 1, '2022-05-17', 15, 16);
+INSERT INTO public.field_booking (id, booking_id, sports_field_id, date, start_time_hour, end_time_hour)
+VALUES (DEFAULT, 3, 2, '2022-05-17', 12, 13);
