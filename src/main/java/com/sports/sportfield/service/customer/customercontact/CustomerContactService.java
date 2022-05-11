@@ -2,6 +2,8 @@ package com.sports.sportfield.service.customer.customercontact;
 
 import com.sports.sportfield.domain.contact.ContactDto;
 import com.sports.sportfield.domain.contact.ContactService;
+import com.sports.sportfield.domain.user.UserDto;
+import com.sports.sportfield.domain.user.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,6 +14,8 @@ public class CustomerContactService {
 
     @Resource
     private ContactService contactService;
+
+    private UserService userService;
 
     public ContactDto addNewContact(ContactDto contactDto) {
         return contactService.addNewContact(contactDto);
@@ -32,4 +36,8 @@ public class CustomerContactService {
     public void updateContactById(Integer id, ContactDto contactDto) {
         contactService.updateContactById(id, contactDto);
     }
+
+//    public void updateContactByUserId(Integer id, UserDto userDto) {
+//        userService.updateContactByUserId(id, userDto);
+//    }
 }

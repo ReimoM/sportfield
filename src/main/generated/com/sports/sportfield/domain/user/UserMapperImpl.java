@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-10T14:13:12+0300",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 16.0.2 (Amazon.com Inc.)"
+    date = "2022-05-11T13:37:17+0300",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.14.1 (Amazon.com Inc.)"
 )
 @Component
 public class UserMapperImpl implements UserMapper {
@@ -63,7 +63,7 @@ public class UserMapperImpl implements UserMapper {
     }
 
     @Override
-    public void updateDto(UserDto userDto, User user) {
+    public void updateEntity(UserDto userDto, User user) {
         if ( userDto == null ) {
             return;
         }

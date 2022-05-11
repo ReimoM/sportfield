@@ -22,5 +22,5 @@ public interface UserMapper {
 
     @InheritConfiguration(name = "toEntity")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateDto(UserDto userDto, @MappingTarget User user);
+    void updateEntity(UserDto userDto, @MappingTarget User user);
 }

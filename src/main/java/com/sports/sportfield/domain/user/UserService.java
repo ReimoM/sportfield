@@ -22,9 +22,6 @@ public class UserService {
     private UserRepository userRepository;
 
     @Resource
-    private ContactService contactService;
-
-    @Resource
     private ContactRepository contactRepository;
 
     @Resource
@@ -53,6 +50,15 @@ public class UserService {
         User user = userRepository.getById(id);
         return userMapper.toDto(user);
     }
+
+//    public void updateContactByUserId(Integer id, UserDto userDto) {
+//        User user = userRepository.getById(id);
+//        Contact contact = user.getContact();
+//        userMapper.updateEntity(userDto, user);
+//        userRepository.save(user);
+//        contactRepository.save(contact);
+//    }
+
 
     public void deleteUserById(Integer id) {
         User user = userRepository.getById(id);

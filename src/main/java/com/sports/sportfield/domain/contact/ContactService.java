@@ -1,5 +1,8 @@
 package com.sports.sportfield.domain.contact;
 
+import com.sports.sportfield.domain.user.User;
+import com.sports.sportfield.domain.user.UserMapper;
+import com.sports.sportfield.domain.user.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,6 +16,12 @@ public class ContactService {
 
     @Resource
     private ContactRepository contactRepository;
+
+    @Resource
+    private UserService userService;
+
+    @Resource
+    private UserMapper userMapper;
 
     public ContactDto addNewContact(ContactDto contactDto) {
         Contact contact = contactMapper.toEntity(contactDto);
@@ -37,7 +46,8 @@ public class ContactService {
     }
 
     public void updateContactById(Integer id, ContactDto contactDto) {
-        Contact contact = contactRepository.getById(id);
+        User user = userMapper.toEntity(userService.findUserById(id));
+        Contact contact = user.getContact();
         contactMapper.updateEntity(contactDto, contact);
         contactRepository.save(contact);
     }
