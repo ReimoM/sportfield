@@ -45,8 +45,8 @@ public class ContactService {
         contactRepository.deleteById(id);
     }
 
-    public void updateContactById(Integer id, ContactDto contactDto) {
-        User user = userMapper.toEntity(userService.findUserById(id));
+    public void updateContactById(Integer userId, ContactDto contactDto) {
+        User user = userMapper.toEntity(userService.findUserById(userId));
         Contact contact = user.getContact();
         contactMapper.updateEntity(contactDto, contact);
         contactRepository.save(contact);

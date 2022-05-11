@@ -33,8 +33,8 @@ public class CustomerContactService {
         contactService.deleteContactById(id);
     }
 
-    public void updateContactById(Integer id, ContactDto contactDto) {
-        contactService.updateContactById(id, contactDto);
+    public void updateContactById(Integer userId, ContactDto contactDto) {
+        contactService.updateContactById(userId, contactDto);
     }
 
 }

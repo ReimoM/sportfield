@@ -41,8 +41,8 @@ public class CustomerContactController {
 
     @PutMapping("/id")
     @Operation(summary = "Uuendab kasutaja id järgi")
-    public void updateContactById(@RequestParam Integer id, @RequestBody ContactDto contactDto) {
-        customerContactService.updateContactById(id, contactDto);
+    public void updateContactById(@RequestParam Integer userId, @RequestBody ContactDto contactDto) {
+        customerContactService.updateContactById(userId, contactDto);
     }
 
 }
