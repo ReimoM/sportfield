@@ -37,7 +37,4 @@ public class CustomerContactService {
         contactService.updateContactById(id, contactDto);
     }
 
-//    public void updateContactByUserId(Integer id, UserDto userDto) {
-//        userService.updateContactByUserId(id, userDto);
-//    }
 }

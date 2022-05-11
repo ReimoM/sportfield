@@ -51,15 +51,6 @@ public class UserService {
         return userMapper.toDto(user);
     }
 
-//    public void updateContactByUserId(Integer id, UserDto userDto) {
-//        User user = userRepository.getById(id);
-//        Contact contact = user.getContact();
-//        userMapper.updateEntity(userDto, user);
-//        userRepository.save(user);
-//        contactRepository.save(contact);
-//    }
-
-
     public void deleteUserById(Integer id) {
         User user = userRepository.getById(id);
         Contact contact = user.getContact();
