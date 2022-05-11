@@ -1,6 +1,7 @@
 package com.sports.sportfield.service.customer.customercontact;
 
 import com.sports.sportfield.domain.contact.ContactDto;
+import com.sports.sportfield.domain.user.UserDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,7 +41,8 @@ public class CustomerContactController {
 
     @PutMapping("/id")
     @Operation(summary = "Uuendab kasutaja id järgi")
-    public void updateContactById(@RequestParam Integer id, @RequestBody ContactDto contactDto) {
-        customerContactService.updateContactById(id, contactDto);
+    public void updateContactById(@RequestParam Integer userId, @RequestBody ContactDto contactDto) {
+        customerContactService.updateContactById(userId, contactDto);
     }
+
 }

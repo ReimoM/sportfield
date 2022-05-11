@@ -22,9 +22,6 @@ public class UserService {
     private UserRepository userRepository;
 
     @Resource
-    private ContactService contactService;
-
-    @Resource
     private ContactRepository contactRepository;
 
     @Resource

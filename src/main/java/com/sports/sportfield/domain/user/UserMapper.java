@@ -7,11 +7,12 @@ import java.util.List;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 
 public interface UserMapper {
-    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "id", source = "userId")
     @Mapping(source = "contactFirstName", target = "contact.firstName")
     @Mapping(source = "contactLastName", target = "contact.lastName")
     @Mapping(source = "contactTelephone", target = "contact.telephone")
     @Mapping(source = "contactEmail", target = "contact.email")
+    @Mapping(source = "contactId", target = "contact.id")
     User toEntity(UserDto userDto);
 
     @InheritInverseConfiguration(name = "toEntity")
@@ -22,5 +23,5 @@ public interface UserMapper {
 
     @InheritConfiguration(name = "toEntity")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateDto(UserDto userDto, @MappingTarget User user);
+    void updateEntity(UserDto userDto, @MappingTarget User user);
 }

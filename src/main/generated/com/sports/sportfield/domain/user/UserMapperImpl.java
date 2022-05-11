@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-10T15:53:59+0300",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 16.0.2 (Amazon.com Inc.)"
+    date = "2022-05-11T15:51:16+0300",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.14.1 (Amazon.com Inc.)"
 )
 @Component
 public class UserMapperImpl implements UserMapper {
@@ -23,6 +23,7 @@ public class UserMapperImpl implements UserMapper {
         User user = new User();
 
         user.setContact( userDtoToContact( userDto ) );
+        user.setId( userDto.getUserId() );
         user.setUsername( userDto.getUsername() );
         user.setPassword( userDto.getPassword() );
 
@@ -42,6 +43,7 @@ public class UserMapperImpl implements UserMapper {
         userDto.setContactLastName( userContactLastName( user ) );
         userDto.setContactTelephone( userContactTelephone( user ) );
         userDto.setContactEmail( userContactEmail( user ) );
+        userDto.setContactId( userContactId( user ) );
         userDto.setUsername( user.getUsername() );
         userDto.setPassword( user.getPassword() );
 
@@ -63,7 +65,7 @@ public class UserMapperImpl implements UserMapper {
     }
 
     @Override
-    public void updateDto(UserDto userDto, User user) {
+    public void updateEntity(UserDto userDto, User user) {
         if ( userDto == null ) {
             return;
         }
@@ -72,6 +74,9 @@ public class UserMapperImpl implements UserMapper {
             user.setContact( new Contact() );
         }
         userDtoToContact1( userDto, user.getContact() );
+        if ( userDto.getUserId() != null ) {
+            user.setId( userDto.getUserId() );
+        }
         if ( userDto.getUsername() != null ) {
             user.setUsername( userDto.getUsername() );
         }
@@ -91,6 +96,7 @@ public class UserMapperImpl implements UserMapper {
         contact.setLastName( userDto.getContactLastName() );
         contact.setTelephone( userDto.getContactTelephone() );
         contact.setEmail( userDto.getContactEmail() );
+        contact.setId( userDto.getContactId() );
 
         return contact;
     }
@@ -155,6 +161,21 @@ public class UserMapperImpl implements UserMapper {
         return email;
     }
 
+    private Integer userContactId(User user) {
+        if ( user == null ) {
+            return null;
+        }
+        Contact contact = user.getContact();
+        if ( contact == null ) {
+            return null;
+        }
+        Integer id = contact.getId();
+        if ( id == null ) {
+            return null;
+        }
+        return id;
+    }
+
     protected void userDtoToContact1(UserDto userDto, Contact mappingTarget) {
         if ( userDto == null ) {
             return;
@@ -171,6 +192,9 @@ public class UserMapperImpl implements UserMapper {
         }
         if ( userDto.getContactEmail() != null ) {
             mappingTarget.setEmail( userDto.getContactEmail() );
+        }
+        if ( userDto.getContactId() != null ) {
+            mappingTarget.setId( userDto.getContactId() );
         }
     }
 }
