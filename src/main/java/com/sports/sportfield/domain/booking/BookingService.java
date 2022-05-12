@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 
 @Service
 public class BookingService {
-
     @Resource
     private BookingRepository bookingRepository;
 

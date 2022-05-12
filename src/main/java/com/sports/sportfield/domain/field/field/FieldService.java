@@ -7,7 +7,6 @@ import java.util.List;
 
 @Service
 public class FieldService {
-
     @Resource
     private FieldMapper fieldMapper;
 

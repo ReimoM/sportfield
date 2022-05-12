@@ -13,8 +13,6 @@ public class LogInService {
     @Resource
     private UserService userService;
 
-
-
     public LogInResponse getValidUser(LogInRequest request) {
         User user = userService.getValidUser(request);
         LogInResponse response = new LogInResponse();

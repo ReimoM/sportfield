@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 
 @Service
 public class PictureService {
-
     @Resource
     private PictureMapper pictureMapper;
 

@@ -10,6 +10,5 @@ public class NewFieldBookingDto {
     private Integer userId;
     private Integer sportsFieldId;
     private LocalDate date;
-
     private List<TimeSlot> timeSlots;
 }

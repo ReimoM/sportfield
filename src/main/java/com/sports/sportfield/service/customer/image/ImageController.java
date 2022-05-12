@@ -15,10 +15,8 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/image")
 public class ImageController {
-
     @Resource
     private PictureFieldService pictureFieldService;
-
 
     @PostMapping("/new")
     @Operation(summary = "Lisa pilt")

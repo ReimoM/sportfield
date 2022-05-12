@@ -14,7 +14,6 @@ public interface ContactMapper {
 
     List<ContactDto> toDtos(List<Contact> contact);
 
-
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "id", ignore = true)
     void updateEntity(ContactDto contactDto, @MappingTarget Contact contact);

@@ -14,7 +14,6 @@ public interface FieldMapper {
     @Mapping(target = "id", ignore = true)
     Field toEntity(FieldDto fieldDto);
 
-
     @InheritInverseConfiguration(name = "toEntity")
     FieldDto toDto(Field field);
 

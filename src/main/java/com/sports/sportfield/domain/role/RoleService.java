@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 
 @Service
 public class RoleService {
-
     @Resource
     private RoleRepository roleRepository;
 

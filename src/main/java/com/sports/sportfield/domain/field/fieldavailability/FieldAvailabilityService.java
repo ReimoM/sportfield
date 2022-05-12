@@ -15,7 +15,6 @@ import java.util.Optional;
 
 @Service
 public class FieldAvailabilityService {
-
     @Resource
     private FieldAvailabilityMapper fieldAvailabilityMapper;
 
@@ -84,7 +83,6 @@ public class FieldAvailabilityService {
         return availableHours;
     }
 
-
     private List<TimeSlot> getAvailableTimeSlots(List<Integer> availableHours) {
         List<TimeSlot> availableTimeSlots = new ArrayList<>();
         for (Integer hour : availableHours) {
@@ -95,7 +93,6 @@ public class FieldAvailabilityService {
         }
         return availableTimeSlots;
     }
-
 
     private List<Integer> getHolidayOpenHours(Optional<FieldAvailability> holidayAvailability) {
         List<Integer> openHours;

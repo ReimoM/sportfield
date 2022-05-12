@@ -58,9 +58,7 @@ public class FieldBookingService {
                 fieldBooking.setSportsField(validSportsField);
                 fieldBookings.add(fieldBooking);
             }
-
         }
-
         fieldBookingRepository.saveAll(fieldBookings);
     }
 

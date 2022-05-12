@@ -9,5 +9,4 @@ public class BookingRequirementInfo {
     private Integer fieldId;
     private Integer sportFieldId;
     private LocalDate date;
-
 }

@@ -31,9 +31,4 @@ public class BookingsController {
     public List<BookingStatement> getFieldBookingsByUserId(@RequestParam Integer userId) {
     return bookingsService.getFieldBookingsById(userId);
     }
-
-
-
-
-
 }

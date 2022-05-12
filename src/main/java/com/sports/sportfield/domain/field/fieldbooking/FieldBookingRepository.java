@@ -8,13 +8,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface FieldBookingRepository extends JpaRepository<FieldBooking, Integer> {
-//    @Query("select f from FieldBooking f where f.sportsField.field.id = ?1 and f.date = ?2")
-//    List<FieldBooking> findFieldBookings(Integer id, LocalDate date);
-
     @Query("select f from FieldBooking f where f.sportsField.id = :id and f.date = :date")
     List<FieldBooking> findFieldBookings(@Param("id") Integer sportsFieldId, @Param("date") LocalDate date);
-
-
 
     @Query("select f from FieldBooking f where f.booking.user.id = ?1")
     List<FieldBooking> findByUserId(Integer id);

@@ -20,7 +20,6 @@ public class BookingsService {
 
     public List<TimeSlot> getAvailableTimeSlots(BookingRequirementInfo infoRequest) {
         return fieldBookingService.getAvailableTimeSlots(infoRequest);
-
     }
 
     public void addBooking(NewFieldBookingDto request) {
@@ -33,20 +32,14 @@ public class BookingsService {
 
         for (FieldBookingDto bookingDto : fieldBookingDto) {
             BookingStatement bookingStatement = new BookingStatement();
-//            bookingStatement.setBookingId(bookingDto.getBookingId());
             bookingStatement.setDate(bookingDto.getDate());
             bookingStatement.setStartTimeHour(bookingDto.getStartTimeHour());
             bookingStatement.setEndTimeHour(bookingDto.getEndTimeHour());
-
             SportsFieldDto sportsFieldDto = sportsFieldService.findSportsFieldById(bookingDto.getSportsFieldId());
             bookingStatement.setSportsFieldName(sportsFieldDto.getFieldName());
             bookingStatement.setSportsType(sportsFieldDto.getSportsSportsType());
-
             bookingStatements.add(bookingStatement);
-
         }
-
-
         return bookingStatements ;
     }
 }

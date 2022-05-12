@@ -38,11 +38,9 @@ public class ContactService {
         return contactMapper.toDtos(contacts);
     }
 
-
     public ContactDto findContactById(Integer id) {
         Contact contact = contactRepository.getById(id);
         return contactMapper.toDto(contact);
-
     }
 
     public void deleteContactById(Integer id) {
@@ -54,6 +52,5 @@ public class ContactService {
         Contact contact = user.getContact();
         contactMapper.updateEntity(contactDto, contact);
         contactRepository.save(contact);
-
     }
 }

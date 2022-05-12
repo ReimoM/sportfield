@@ -86,12 +86,18 @@ public class FieldsController {
     @PostMapping("/new-sportsfield")
     @Operation(summary = "Lisa spordiväljak")
     public void addNewSportsField(@RequestParam Integer sportsId, @RequestParam Integer fieldId) {
-        fieldsService.addNewSportsField(sportsId,fieldId);
+        fieldsService.addNewSportsField(sportsId, fieldId);
     }
 
     @DeleteMapping("/sportsfield")
-    @Operation(summary= "Kutsusta spordiväljak")
+    @Operation(summary = "Kutsusta spordiväljak")
     public void removeSportsFieldById(Integer id) {
         fieldsService.removeSportsFieldById(id);
     }
+
 }
+
+
+
+
+

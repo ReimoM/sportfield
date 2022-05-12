@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface FieldAvailabilityRepository extends JpaRepository<FieldAvailability, Integer> {
-
-
     @Query("select f from FieldAvailability f where f.field.id = ?1")
     List<FieldAvailability> findByFieldId(Integer id);
 
