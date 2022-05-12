@@ -94,10 +94,4 @@ public class FieldsController {
     public void removeSportsFieldById(Integer id) {
         fieldsService.removeSportsFieldById(id);
     }
-
 }
-
-
-
-
-

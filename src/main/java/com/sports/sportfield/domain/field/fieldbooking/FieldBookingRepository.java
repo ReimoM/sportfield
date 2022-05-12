@@ -18,5 +18,5 @@ public interface FieldBookingRepository extends JpaRepository<FieldBooking, Inte
     List<FieldBooking> findByBooking_User_Id(Integer id);
 
 
-
+    void deleteById(FieldBooking id);
 }

@@ -42,4 +42,8 @@ public class BookingsService {
         }
         return bookingStatements ;
     }
+
+    public void deleteFieldBookingByFieldBookingId(Integer id) {
+        fieldBookingService.deleteFieldBookingByFieldBookingId(id);
+    }
 }

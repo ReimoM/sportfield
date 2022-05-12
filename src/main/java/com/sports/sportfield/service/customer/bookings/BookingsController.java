@@ -1,5 +1,6 @@
 package com.sports.sportfield.service.customer.bookings;
 
+import com.sports.sportfield.domain.field.fieldbooking.FieldBooking;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,4 +32,11 @@ public class BookingsController {
     public List<BookingStatement> getFieldBookingsByUserId(@RequestParam Integer userId) {
     return bookingsService.getFieldBookingsById(userId);
     }
+
+    @DeleteMapping("/id")
+    @Operation(summary = "Kustuta broneering")
+    public void deleteFieldBookingByFieldBookingId(Integer id) {
+        bookingsService.deleteFieldBookingByFieldBookingId(id);
+    }
+
 }

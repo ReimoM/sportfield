@@ -66,4 +66,9 @@ public class FieldBookingService {
         List<FieldBooking> fieldbookings = fieldBookingRepository.findByUserId(userId);
         return fieldBookingMapper.toDtos(fieldbookings);
     }
+
+    public void deleteFieldBookingByFieldBookingId(Integer id) {
+        fieldBookingRepository.deleteById(id);
+
+    }
 }
