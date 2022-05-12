@@ -32,6 +32,8 @@ public class BookingsService {
 
         for (FieldBookingDto bookingDto : fieldBookingDto) {
             BookingStatement bookingStatement = new BookingStatement();
+//            bookingStatement.setBookingId(bookingDto.getBookingId());
+            bookingStatement.setFieldBookingId(bookingDto.getFieldBookingId());
             bookingStatement.setDate(bookingDto.getDate());
             bookingStatement.setStartTimeHour(bookingDto.getStartTimeHour());
             bookingStatement.setEndTimeHour(bookingDto.getEndTimeHour());
