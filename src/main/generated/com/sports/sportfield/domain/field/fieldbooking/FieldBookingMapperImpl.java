@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-10T15:54:00+0300",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 16.0.2 (Amazon.com Inc.)"
+    date = "2022-05-12T15:19:03+0300",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.14.1 (Amazon.com Inc.)"
 )
 @Component
 public class FieldBookingMapperImpl implements FieldBookingMapper {
@@ -23,6 +23,7 @@ public class FieldBookingMapperImpl implements FieldBookingMapper {
 
         FieldBooking fieldBooking = new FieldBooking();
 
+        fieldBooking.setId( fieldBookingDto.getFieldBookingId() );
         fieldBooking.setDate( fieldBookingDto.getDate() );
         fieldBooking.setStartTimeHour( fieldBookingDto.getStartTimeHour() );
         fieldBooking.setEndTimeHour( fieldBookingDto.getEndTimeHour() );
@@ -40,6 +41,7 @@ public class FieldBookingMapperImpl implements FieldBookingMapper {
 
         fieldBookingDto.setBookingId( fieldBookingBookingId( fieldBooking ) );
         fieldBookingDto.setSportsFieldId( fieldBookingSportsFieldId( fieldBooking ) );
+        fieldBookingDto.setFieldBookingId( fieldBooking.getId() );
         fieldBookingDto.setDate( fieldBooking.getDate() );
         fieldBookingDto.setStartTimeHour( fieldBooking.getStartTimeHour() );
         fieldBookingDto.setEndTimeHour( fieldBooking.getEndTimeHour() );
@@ -67,6 +69,9 @@ public class FieldBookingMapperImpl implements FieldBookingMapper {
             return;
         }
 
+        if ( fieldBookingDto.getFieldBookingId() != null ) {
+            fieldBooking.setId( fieldBookingDto.getFieldBookingId() );
+        }
         if ( fieldBookingDto.getDate() != null ) {
             fieldBooking.setDate( fieldBookingDto.getDate() );
         }
