@@ -5,7 +5,7 @@ VALUES (DEFAULT, 'Marju', 'Tamm', '53345785', 'tammmarju@gmail.com');
 INSERT INTO public.contact (id, first_name, last_name, telephone, email)
 VALUES (DEFAULT, 'Reimo-Martin', 'Salo', '55598524', 'reimosalo@gmail.com');
 INSERT INTO public.contact (id, first_name, last_name, telephone, email)
-VALUES (DEFAULT, 'Holger', 'Part', '55597482', 'holger.part@gmail.com');
+VALUES (DEFAULT, 'Kati', 'Karu', '55597456', 'kati.karu@gmail.com');
 INSERT INTO public.location (id, county, latitude, longitude)
 VALUES (DEFAULT, 'Harjumaa', null, null);
 INSERT INTO public.location (id, county, latitude, longitude)
@@ -14,6 +14,14 @@ INSERT INTO public.location (id, county, latitude, longitude)
 VALUES (DEFAULT, 'Pärnumaa', null, null);
 INSERT INTO public.location (id, county, latitude, longitude)
 VALUES (DEFAULT, 'Viljandimaa', null, null);
+INSERT INTO public.location (id, county, latitude, longitude)
+VALUES (DEFAULT, 'Raplamaa', null, null);
+INSERT INTO public.location (id, county, latitude, longitude)
+VALUES (DEFAULT, 'Järvamaa', null, null);
+INSERT INTO public.location (id, county, latitude, longitude)
+VALUES (DEFAULT, 'Jõgevamaa', null, null);
+INSERT INTO public.location (id, county, latitude, longitude)
+VALUES (DEFAULT, 'Põlvamaa', null, null);
 INSERT INTO public.field (id, location_id, name, is_active) VALUES (DEFAULT, 1, 'Sõle Spordikeskus', true);
 INSERT INTO public.field (id, location_id, name, is_active) VALUES (DEFAULT, 1, 'Arigato Keskus', true);
 INSERT INTO public.field (id, location_id, name, is_active) VALUES (DEFAULT, 1, 'Eduard Vilde tee korvpalliväljak', true);
@@ -40,7 +48,7 @@ INSERT INTO public.role (id, name) VALUES (DEFAULT, 'admin');
 INSERT INTO public.user (id, contact_id, role_id, username, password) VALUES (DEFAULT, 1, 1, 'kyllilum', 'kyllilum');
 INSERT INTO public.user (id, contact_id, role_id, username, password) VALUES (DEFAULT, 2, 2, 'marjutamm', 'marjutamm');
 INSERT INTO public.user (id, contact_id, role_id, username, password) VALUES (DEFAULT, 3, 1, 'spordimees', 'parool15');
-INSERT INTO public.user (id, contact_id, role_id, username, password) VALUES (DEFAULT, 4, 1, 'spordipoiss', 'parool13');
+INSERT INTO public.user (id, contact_id, role_id, username, password) VALUES (DEFAULT, 4, 1, 'sporditüdruk', 'parool13');
 INSERT INTO public.sports_field (id, field_id, sports_id) VALUES (DEFAULT, 1, 1);
 INSERT INTO public.sports_field (id, field_id, sports_id) VALUES (DEFAULT, 1, 2);
 INSERT INTO public.sports_field (id, field_id, sports_id) VALUES (DEFAULT, 1, 3);
@@ -180,11 +188,28 @@ INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, e
 INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 12, null, null, null, '2022-05-01', false);
 INSERT INTO public.field_availability (id, field_id, weekday, start_time_hour, end_time_hour, holiday, is_open) VALUES (DEFAULT, 13, null, null, null, '2022-05-01', false);
 INSERT INTO public.booking (id, user_id) VALUES (DEFAULT, 1);
-INSERT INTO public.booking (id, user_id) VALUES (DEFAULT, 2);
 INSERT INTO public.booking (id, user_id) VALUES (DEFAULT, 3);
+INSERT INTO public.booking (id, user_id) VALUES (DEFAULT, 3);
+INSERT INTO public.booking (id, user_id) VALUES (DEFAULT, 1);
+INSERT INTO public.booking (id, user_id) VALUES (DEFAULT, 1);
+INSERT INTO public.booking (id, user_id) VALUES (DEFAULT, 4);
+INSERT INTO public.booking (id, user_id) VALUES (DEFAULT, 4);
+INSERT INTO public.booking (id, user_id) VALUES (DEFAULT, 1);
 INSERT INTO public.field_booking (id, booking_id, sports_field_id, date, start_time_hour, end_time_hour)
-VALUES (DEFAULT, 1, 1, '2022-05-16', 12, 13);
+VALUES (DEFAULT, 1, 1, '2022-05-17', 12, 13);
 INSERT INTO public.field_booking (id, booking_id, sports_field_id, date, start_time_hour, end_time_hour)
 VALUES (DEFAULT, 2, 1, '2022-05-17', 15, 16);
 INSERT INTO public.field_booking (id, booking_id, sports_field_id, date, start_time_hour, end_time_hour)
 VALUES (DEFAULT, 3, 2, '2022-05-17', 12, 13);
+INSERT INTO public.field_booking (id, booking_id, sports_field_id, date, start_time_hour, end_time_hour)
+VALUES (DEFAULT, 4, 8, '2022-05-18', 12, 13);
+INSERT INTO public.field_booking (id, booking_id, sports_field_id, date, start_time_hour, end_time_hour)
+VALUES (DEFAULT, 5, 4, '2022-05-19', 16, 17);
+INSERT INTO public.field_booking (id, booking_id, sports_field_id, date, start_time_hour, end_time_hour)
+VALUES (DEFAULT, 6, 4, '2022-05-19', 17, 18);
+INSERT INTO public.field_booking (id, booking_id, sports_field_id, date, start_time_hour, end_time_hour)
+VALUES (DEFAULT, 7, 20, '2022-05-19', 07, 08);
+INSERT INTO public.field_booking (id, booking_id, sports_field_id, date, start_time_hour, end_time_hour)
+VALUES (DEFAULT, 8, 20, '2022-05-23', 09, 10);
+
+
